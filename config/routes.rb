@@ -1,23 +1,17 @@
 Rails.application.routes.draw do
+  root to: 'public/homes#top'
 
-
-  namespace :public do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'favorites/index'
-  end
-  namespace :public do
-    get 'users/index'
-  end
   scope module: :public do
+    get 'about' => 'homes#about', as: 'about'
+    get 'favorites/index'
+    get 'users/index'
     get 'records/index'
-    resources :record_tea_leaves, only: [:show, :create, :edit, :update, :destroy]
-    resources :record_coffees, only: [:show, :create, :edit, :update, :destroy]
+    resources :record_tea_leaves, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :record_coffees, only: [:show, :new, :create, :edit, :update, :destroy]
   end
-  
+
   namespace :admin do
-    get 'homes/top'
+    get '/' => 'homes#top'
   end
   namespace :admin do
     get 'users/index'
