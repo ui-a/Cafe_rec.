@@ -1,0 +1,55 @@
+<h3>投稿フォーム</h3>
+<%= form_with model: @record_coffee do |f| %>
+  <div class="form-group">
+    <%= f.label :item_name, '商品名' %>
+    <%= f.text_field :item_name, placeholder: 'オリジナルブレンドコーヒー', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :brand_name, 'ブランド名' %>
+    <%= f.text_field :brand_name, placeholder: 'RecordCoffee', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, '価格(税込/100gあたり)' %>
+    <%= f.number_field :price, placeholder: '1000', class: 'form-control' %>
+  </div>
+
+ <% if @record_coffee.id.nil? %>
+    <div class="form-group" id="star">
+      <%= f.label :total_star, '総合評価' %>
+      <%= f.hidden_field :total_star, id: :review_star, class: 'form-control' %>
+      <div id="post_raty"></div>
+    </div>
+    <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+
+        elem.innerHTML = ""
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'record_coffee[total_star]',
+        };
+        raty(elem, opt);
+      });
+    </script>
+  <% else %>
+    <div class="form-group">
+      <%= render 'star', record_coffee: record_coffee %>
+    </div>
+  <% end %>
+  
+
+  <div class="form-group">
+    <%= f.label :image, '画像' %>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :review, 'レビュー内容' %>
+    <%= f.text_area :review %>
+  </div>
+  <div class="form-group">
+  <%= f.submit '投稿' %>
+      </div>
+  <% end %>
