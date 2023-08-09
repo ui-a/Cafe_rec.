@@ -1,2 +1,26 @@
-<h1>Public::Record#index</h1>
-<p>Find me in app/views/public/record/index.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <%# render 'layouts/errors', obj: @record %>
+  <div class='row'>
+    <div class='col-md-3'>
+
+      <% @records.each do |record| %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <%= record.category %>
+          <%= record.item_name %>
+          <%= record.brand_name %>
+          <%= record.price %>
+          <%= record.total_star %>
+          <%= record.scent_star %>
+          <%= record.bitter_star %>
+          <%= record.acidity_star %>
+          <%= record.sweet_star %>
+          <%= record.rich_star %>
+          <%= record.review %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

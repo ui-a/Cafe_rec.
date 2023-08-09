@@ -1,0 +1,28 @@
+<div class='container margin-y fit-content'>
+<h4>ジャンル一覧・追加</h4>
+    <div>
+      <div class="margin-y">
+        <%= form_with model: @category, url: admin_categories_path do |f| %>
+        <%= f.label :name, "カテゴリー名" %>
+        <%= f.text_field :name, class: "margin-x" %>
+        <%= f.submit '新規登録', class: "btn btn-success" %>
+        <% end %>
+      </div>
+
+      <table class="table table-light">
+        <thead>
+          <tr>
+            <th class="bg-brown" colspan="2">カテゴリー名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+          <tr>
+            <td class="align-middle"><%= category.name %></td>
+            <td class="text-center"><%= link_to "編集する", edit_admin_category_path(category.id), class: "btn btn-success" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>

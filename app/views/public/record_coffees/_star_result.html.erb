@@ -1,0 +1,107 @@
+<div id="total_star_<%= record_coffee.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#total_star_<%= record_coffee.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_coffee.total_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div id="scent_star_<%= record_coffee.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#scent_star_<%= record_coffee.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_coffee.scent_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div id="bitter_star_<%= record_coffee.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#bitter_star_<%= record_coffee.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_coffee.bitter_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div id="acidity_star_<%= record_coffee.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#acidity_star_<%= record_coffee.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_coffee.acidity_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div id="sweet_star_<%= record_coffee.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#sweet_star_<%= record_coffee.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_coffee.sweet_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div id="rich_star_<%= record_coffee.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#rich_star_<%= record_coffee.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_coffee.rich_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>

@@ -4,13 +4,30 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :record_coffees, dependent: :destroy
-  has_many :record_tea_leaves, dependent: :destroy
+  has_many :records, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favorited_record_coffees, through: :favorites, source: :record_coffee
-  has_many :favorited_record_tea_leaves, through: :favorites, source: :record_tea_leave
+  has_many :favoriteds, through: :favorites, source: :record
   
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20}
   
+  
+  
+  GUEST_USER_EMAIL = "guest@example.com"
+  
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end

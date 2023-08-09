@@ -1,0 +1,2 @@
+class RecordTeaLeafe < ApplicationRecord
+end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {
@@ -12,43 +13,35 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+devise_scope :user do
+  post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+end
+
   root to: 'public/homes#top'
 
   scope module: :public do
     get 'about' => 'homes#about', as: 'about'
-    get 'favorites/index'
-    get 'users/index'
-    get 'records' => 'records#index'
+    resources :records, only: [:index, :show]
     resources :record_tea_leaves, only: [:show, :new, :create, :edit, :update, :destroy]
     resources :record_coffees, only: [:show, :new, :create, :edit, :update, :destroy]
+    get 'favorites/index'
+    get 'users/index'
+    get 'users/confirm' => 'users#confirm'
+    get 'users/withdraw' => 'users#withdraw'
+    get 'search_tag' => 'record_coffees#search_tag'
   end
 
   namespace :admin do
     get '/' => 'homes#top'
   end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
 
   namespace :admin do
-    get 'tag/index'
-    get 'tag/edit'
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :records, only: [:index, :show, :edit, :update, :destroy]
+    resources :categories, only: [:index, :create, :edit, :update, :destroy]
+    resources :tags, only: [:index, :edit, :update]
   end
-  namespace :admin do
-    get 'record_tea_leaves/show'
-    get 'record_tea_leaves/edit'
-    get 'record_tea_leaves/new'
-  end
-  namespace :admin do
-    get 'record_coffees/show'
-    get 'record_coffees/edit'
-    get 'record_coffees/new'
-  end
-  namespace :admin do
-    get 'records/index'
-  end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

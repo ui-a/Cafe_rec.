@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_04_113056) do
+ActiveRecord::Schema.define(version: 2023_08_09_133744) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,60 +52,74 @@ ActiveRecord::Schema.define(version: 2023_08_04_113056) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "record_coffee_id", null: false
-    t.integer "record_tea_leave_id", null: false
-    t.text "comment", null: false
+    t.integer "user_id"
+    t.integer "record_coffee_id"
+    t.integer "record_tea_lea_id"
+    t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "record_coffee_id", null: false
-    t.integer "record_tea_leave_id", null: false
+    t.integer "user_id"
+    t.integer "record_coffee_id"
+    t.integer "record_tea_leafe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "record_coffees", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "category_id", null: false
     t.string "item_name", null: false
     t.string "brand_name", null: false
     t.integer "price", null: false
     t.text "review", null: false
-    t.float "total_star", null: false
-    t.float "scent_star", null: false
-    t.float "bitter_star", null: false
-    t.float "acidity_star", null: false
-    t.float "sweet_star", null: false
-    t.float "rich_star", null: false
     t.boolean "release", default: true, null: false
+    t.float "total_star", null: false
+    t.float "scent_star"
+    t.float "bitter_star"
+    t.float "acidity_star"
+    t.float "sweet_star"
+    t.float "rich_star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "record_tea_leaves", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "category_id", null: false
     t.string "item_name", null: false
     t.string "brand_name", null: false
     t.integer "price", null: false
     t.text "review", null: false
-    t.float "total_star", null: false
-    t.float "scent_star", null: false
-    t.float "bitter_star", null: false
-    t.float "fresh_star", null: false
-    t.float "easy_star", null: false
     t.boolean "release", default: true, null: false
+    t.float "total_star", null: false
+    t.float "scent_star"
+    t.float "sweet_star"
+    t.float "astringency_star"
+    t.float "fresh_star"
+    t.float "easy_star"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "records", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id", null: false
-    t.integer "record_coffee_id", null: false
-    t.integer "record_tea_leave_id", null: false
+    t.integer "tag_id"
+    t.integer "record_coffee_id"
+    t.integer "record_tea_leafe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -122,7 +136,8 @@ ActiveRecord::Schema.define(version: 2023_08_04_113056) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
