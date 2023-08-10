@@ -1,25 +1,28 @@
 class Public::RecordCoffeesController < ApplicationController
+
   def show
+    @record_coffee = RecordCoffee.find(params[:id])
+    @user = User.find(@record_coffee.user[:id])
   end
 
   def edit
   end
 
   def new
-    @record_coffee = Record.new
+    @record_coffee = RecordCoffee.new
     @categories = Category.all
   end
 
   def create
-    @record_coffee = Record.new(record_coffee_params)
+    @record_coffee = RecordCoffee.new(record_coffee_params)
     @record_coffee.user_id = current_user.id
     @categories = Category.all
-    tag_list = params[:record][:tag].split(',')
+    tag_list = params[:record_coffee][:tag].split(',')
     if @record_coffee.save
       @record_coffee.save_tags(tag_list)
-      redirect_to records_coffee_show_path(@record_coffee), notice: "レビューが投稿されました"
+      redirect_to record_coffee_path(@record_coffee), notice: "レビューが投稿されました"
     else
-      @records = Record.all
+      @record_coffees = RecordCoffee.all
       render '/public/records_coffee_new'
     end
   end
@@ -47,6 +50,7 @@ class Public::RecordCoffeesController < ApplicationController
       :sweet_star,
       :rich_star,
       :release,
+      :tag,
       :image
     )
   end

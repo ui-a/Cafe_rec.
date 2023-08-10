@@ -1,5 +1,12 @@
-<h3>投稿フォーム</h3>
-<%= form_with model: @record_coffee do |f| %>
+<div class='container px-5 px-sm-0'>
+  <%# render 'layouts/errors', obj: @record %>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
+    </div>
+    <div class='col-md-9'>
+      <h5>投稿フォーム</h5>
+      <%= form_with model: @record_coffee do |f| %>
   <div class="d-flex padding-sm-y">
     <%= f.label :category_id, "カテゴリー", class: "label-width" %>
     <%= f.collection_select :category_id, @categories, :id, :name, include_blank: "--選択してください--" %>

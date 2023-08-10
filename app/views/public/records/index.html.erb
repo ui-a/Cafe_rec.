@@ -2,25 +2,34 @@
   <%# render 'layouts/errors', obj: @record %>
   <div class='row'>
     <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
+    </div>
 
-      <% @records.each do |record| %>
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-          <%= record.category %>
-          <%= record.item_name %>
-          <%= record.brand_name %>
-          <%= record.price %>
-          <%= record.total_star %>
-          <%= record.scent_star %>
-          <%= record.bitter_star %>
-          <%= record.acidity_star %>
-          <%= record.sweet_star %>
-          <%= record.rich_star %>
-          <%= record.review %>
-          </div>
-        </div>
+    <div class='col-md-9'>
+      <% @instances.each do |instance| %>
+        <% if instance.class == "RecordCoffee" %>
+          <%# record_coffeeの表示 %>
+          <%= render 'public/record_coffees/frame', record_coffee: @record_coffee %>
+        <% else %>
+          <%# record_tea_leafeの表示 %>
+          <%= render 'public/record_tea_leaves/frame', record_tea_leafe: @record_tea_leafe %>
+        <% end %>
       <% end %>
 
+    <div class="card mb-3" style="max-width: 600px;">
+      <div class="row">
+        <div class="col-lg-4">
+          <%= image_tag 'no_image.jpg', alt: '...' %>
+        </div>
+        <div class="col-lg-8">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </div>
