@@ -12,4 +12,5 @@ class Public::RecordsController < ApplicationController
     @instances.sort!{ |a, b| b.created_at <=> a.created_at }
   end
   
+  
 end

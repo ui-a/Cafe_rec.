@@ -1,10 +1,37 @@
-<% record_coffees.each do |record_coffee| %>
+    <div class="card mb-3" style="max-width: 600px;">
+      <div class="card-header">
+        <%# record_coffee.user_name %>
+        <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <%# image_tag record_coffee.get_image(250,167), alt: '...' %>
+        </div>
+        <div class="col-lg-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= record_coffee.category.name %></h5>
+            <p class="card-text"><%= record_coffee.item_name %></p>
+            <%= record_coffee.brand_name %>
+            <%= record_coffee.price %>
+            <% @tag_list.each do |list|%>
+              <i class="fa-sharp fa-solid fa-tag"></i>
+              <%=link_to list.name, search_tag_coffee_path(tag_id: list.id) %>
+              <%="(#{list.record_coffees.count})" %>
+            <% end %>
+            <%= record_coffee.review %>
+            <%= render 'star_result', record_coffee: @record_coffee %>
+
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
 <div class="card" style="width: 18rem;">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title"><%= record_coffee.item_name %>></h5>
+    <h5 class="card-title"><%= record_coffee.item_name %></h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
-<% end %>

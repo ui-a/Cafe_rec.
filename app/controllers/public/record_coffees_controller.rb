@@ -3,6 +3,7 @@ class Public::RecordCoffeesController < ApplicationController
   def show
     @record_coffee = RecordCoffee.find(params[:id])
     @user = User.find(@record_coffee.user[:id])
+    @tag_list = Tag.all
   end
 
   def edit
@@ -22,7 +23,6 @@ class Public::RecordCoffeesController < ApplicationController
       @record_coffee.save_tags(tag_list)
       redirect_to record_coffee_path(@record_coffee), notice: "レビューが投稿されました"
     else
-      @record_coffees = RecordCoffee.all
       render '/public/records_coffee_new'
     end
   end
@@ -50,9 +50,10 @@ class Public::RecordCoffeesController < ApplicationController
       :sweet_star,
       :rich_star,
       :release,
-      :tag,
+      :tagging,
       :image
     )
   end
+
 
 end

@@ -28,7 +28,7 @@ end
     get 'users/index'
     get 'users/confirm' => 'users#confirm'
     get 'users/withdraw' => 'users#withdraw'
-    get 'search_tag' => 'record_coffees#search_tag'
+    get 'search_tag_coffee' => 'record_coffees#search_tag'
   end
 
   namespace :admin do
