@@ -1,11 +1,13 @@
-    <div class="card mb-3" style="max-width: 600px;">
+    <div class="card mb-3" style="max-width: 700px;">
       <div class="card-header">
+        <%= record_coffee.item_name %>
         <%# record_coffee.user_name %>
         <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <%# image_tag record_coffee.get_image(250,167), alt: '...' %>
+          <p><%= image_tag record_coffee.get_image(250,167) %></p>
+          <%= render 'star_result', record_coffee: @record_coffee %>
         </div>
         <div class="col-lg-8">
           <div class="card-body">
@@ -16,11 +18,12 @@
             <% @tag_list.each do |list|%>
               <i class="fa-sharp fa-solid fa-tag"></i>
               <%=link_to list.name, search_tag_coffee_path(tag_id: list.id) %>
-              <%="(#{list.record_coffees.count})" %>
             <% end %>
             <%= record_coffee.review %>
-            <%= render 'star_result', record_coffee: @record_coffee %>
-
+          <% if @record_coffee.user == current_user %>
+            <td><%= link_to 'Edit', edit_record_coffee_path(@record_coffee), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to 'Destroy', @record_coffee, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <% end %>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>

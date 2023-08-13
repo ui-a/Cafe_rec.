@@ -4,4 +4,5 @@ class Public::TagController < ApplicationController
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @records = @tag.records
+  end
 end
