@@ -4,6 +4,7 @@ class Public::RecordCoffeesController < ApplicationController
     @record_coffee = RecordCoffee.find(params[:id])
     @user = User.find(@record_coffee.user[:id])
     @tag_list = @record_coffee.tags
+    @coffee_comment = Comment.new
   end
 
   def edit

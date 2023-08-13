@@ -23,6 +23,10 @@ class RecordTeaLeafe < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 
   def save_tags(tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?

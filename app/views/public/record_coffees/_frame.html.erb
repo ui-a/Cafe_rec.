@@ -1,5 +1,14 @@
     <div class="card mb-3" style="max-width: 700px;">
       <div class="card-header">
+        <% if @record_coffee.favorited_by?(current_user) %>
+          <%= link_to record_coffee_favorites_path(@record_coffee), method: :delete do %>
+        ♥<%= @record_coffee.favorites.count %>
+          <% end %>
+        <% else %>
+          <%= link_to record_coffee_favorites_path(@record_coffee), method: :post do %>
+        ♡<%= @record_coffee.favorites.count %>
+          <% end %>
+        <% end %>
         <%= record_coffee.item_name %>
         <%# record_coffee.user_name %>
         <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
@@ -24,7 +33,23 @@
             <td><%= link_to 'Edit', edit_record_coffee_path(@record_coffee), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @record_coffee, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            <div>
+              <p>comment (<%= @record_coffee.comments.count %>)</p>
+              <% @record_coffee.comments.each do |comment| %>
+              <%= comment.user.name %>
+              <%= comment.comment %>
+                <% if record_coffee.user == current_user %>
+                  <%= link_to "削除", record_coffee_comment_path(comment.record_coffee, comment), method: :delete %>
+                <% end %>
+              <% end %>
+            </div>
+            <div>
+              <%= form_with model: [@record_coffee, @coffee_comment] do |f| %>
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+              <%= f.submit "送信する" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

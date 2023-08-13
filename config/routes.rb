@@ -22,12 +22,18 @@ end
   scope module: :public do
     get 'about' => 'homes#about', as: 'about'
     resources :records, only: [:index, :show]
-    resources :record_tea_leaves, only: [:show, :new, :create, :edit, :update, :destroy]
-    resources :record_coffees, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :record_tea_leaves, only: [:show, :new, :create, :edit, :update, :destroy] do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+    resources :record_coffees, only: [:show, :new, :create, :edit, :update, :destroy] do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
     get 'favorites/index'
     get 'users/index'
     get 'users/confirm' => 'users#confirm'
-    get 'users/withdraw' => 'users#withdraw'
+    patch 'users/withdraw' => 'users#withdraw'
     get 'search_tag_coffee' => 'record_coffees#search_tag'
   end
 

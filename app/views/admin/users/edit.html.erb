@@ -1,2 +1,41 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+
+    <h4 class="margin-y"><%= @user.name %>さんの会員編集画面</h4>
+    <%= form_with model: @user, url: admin_user_path do |f| %>
+    <%= render "layouts/errors", obj: @user %>
+
+    <div class="field margin-y">
+
+      <div class="d-flex padding-sm-y">
+        <p class="label-width label-name">会員ID</p>
+        <p><%= @user.id %></p>
+
+      </div>
+
+      <div class="d-flex padding-sm-y">
+          <%= f.label :name, "名前", class: "label-position" %>
+          <%= f.text_field :name, placeholder: "令和", class: "field-width" %>
+      </div>
+
+
+      <div class="d-flex padding-sm-y">
+        <%= f.label :email, "メールアドレス", class: "label-width" %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "example@example.com", class: "field-width" %>
+      </div>
+
+      <div class="d-flex padding-sm-y">
+        <p class="label-width label-name">会員ステータス</p>
+        <%= f.radio_button :is_deleted, false %>
+      　<%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+      　<%= f.radio_button :is_deleted, true %>
+      　<%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+      </div>
+
+    </div>
+    <div>
+      <%= f.submit '変更を保存する' ,class: "btn btn-success" %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>

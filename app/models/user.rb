@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :records, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favoriteds, through: :favorites, source: :record
   
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20}
   
