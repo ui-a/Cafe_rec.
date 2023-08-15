@@ -1,83 +1,12 @@
 <div class='container px-5 px-sm-0'>
-  <%# render 'layouts/errors', obj: @record %>
+  <%= render 'layouts/errors', obj: @record_coffee %>
   <div class='row'>
     <div class='col-md-3'>
       <%= render 'public/records/sidebar', record: @record %>
     </div>
     <div class='col-md-9'>
       <h5>投稿フォーム</h5>
-      <%= form_with model: @record_coffee do |f| %>
-  <div class="d-flex padding-sm-y">
-    <%= f.label :category_id, "カテゴリー", class: "label-width" %>
-    <%= f.collection_select :category_id, @categories, :id, :name, include_blank: "--選択してください--" %>
+      <%= render 'coffee_form', record: @record_coffee %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :item_name, '商品名' %>
-    <%= f.text_field :item_name, placeholder: 'オリジナルブレンドコーヒー', class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :brand_name, 'ブランド名' %>
-    <%= f.text_field :brand_name, placeholder: 'RecordCoffee', class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :price, '価格(税込/100gあたり)' %>
-    <%= f.number_field :price, placeholder: '1000', class: 'form-control' %>
-  </div>
-
-  <% if @record_coffee.id.nil? %>
-  <div class="form-group">
-      <%= f.label :total_star, '総合評価' %>
-    <div id="post_raty"></div>
-  </div>
-    <%= render 'star_form', record_coffee: @record_coffee %>
-
-  <div class="form-group">
-      <%= f.label :scent_star, '香り' %>
-    <div id="post_raty1"></div>
-  </div>
-    <%= render 'star_form', record_coffee: @record_coffee %>
-
-  <div class="form-group">
-      <%= f.label :bitter_star, '苦味' %>
-    <div id="post_raty2"></div>
-  </div>
-    <%= render 'star_form', record_coffee: @record_coffee %>
-
-  <div class="form-group">
-      <%= f.label :acidity_star, '酸味' %>
-    <div id="post_raty3"></div>
-  </div>
-    <%= render 'star_form', record_coffee: @record_coffee %>
-
-  <div class="form-group">
-      <%= f.label :sweet_star, '甘み' %>
-    <div id="post_raty4"></div>
-  </div>
-    <%= render 'star_form', record_coffee: @record_coffee %>
-
-  <div class="form-group">
-      <%= f.label :rich_star, 'コク' %>
-    <div id="post_raty5"></div>
-  </div>
-    <% else %>
-      <div class="form-group">
-        <%= render 'star_result', record_coffee: @record_coffee %>
-      </div>
-    <% end %>
-
-  <div class="form-group">
-        <%= f.label :tag, 'タグ(,で区切ると複数タグ登録できます)' %>
-        <%= f.text_field :tag, value: @tag_list, class: 'form-control' %>
-
-  <div class="form-group">
-    <%= f.label :image, '画像' %>
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :review, 'レビュー内容' %>
-    <%= f.text_area :review %>
-  </div>
-  <div class="form-group">
-  <%= f.submit '投稿' %>
-      </div>
-  <% end %>
+</div>

@@ -1,8 +1,12 @@
 <div class='container px-5 px-sm-0'>
-  <%# render 'layouts/errors', obj: @record %>
+  <%= render 'layouts/errors', obj: @record_coffee %>
   <div class='row'>
     <div class='col-md-3'>
       <%= render 'public/records/sidebar', record: @record %>
     </div>
-<h1>Public::RecordCoffees#edit</h1>
-<p>Find me in app/views/public/record_coffees/edit.html.erb</p>
+    <div class='col-md-9'>
+      <h5>投稿フォーム</h5>
+      <%= render 'coffee_form', record: @record_coffee %>
+    </div>
+  </div>
+</div>

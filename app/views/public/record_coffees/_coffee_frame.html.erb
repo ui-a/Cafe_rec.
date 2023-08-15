@@ -1,0 +1,65 @@
+    <div class="card mb-3" style="max-width: 700px;">
+      <div class="card-header">
+        <div id="favorite_buttons_<%= @record_coffee.id %>" >
+          <%= render 'public/favorites/coffee_favorite', record_coffee: @record_coffee %>
+        </div>
+        <%= record_coffee.item_name %>
+        <%= record_coffee.user.name %>
+        <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <p><%= image_tag record_coffee.get_image(250,167) %></p>
+          <%= render 'star_result', record_coffee: @record_coffee %>
+        </div>
+        <div class="col-lg-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= record_coffee.category.name %></h5>
+            <p class="card-text"><%= record_coffee.item_name %></p>
+            <ul class="list-group list-group-flush border-0">
+              <li class="list-group-item">
+                <%= record_coffee.brand_name %>
+              </li>
+              <li class="list-group-item">
+                <%= record_coffee.price.to_s(:delimited) %>円(税込)
+              </li>
+              <li class="list-group-item">
+           　　   <% @tag_list.each do |list|%>
+         　　　　     <i class="fa-sharp fa-solid fa-tag"></i>
+            　　　　  <%=link_to list.name, search_tag_coffee_path(tag_id: list.id) %>
+                <% end %>
+          　　  </li>
+              <li class="list-group-item">
+                <%= record_coffee.review %>
+                <% if @record_coffee.user == current_user %>
+                  <%= link_to 'Edit', edit_record_coffee_path(@record_coffee), class: "btn btn-sm btn-success" %>
+                  <%= link_to 'Destroy', @record_coffee, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p>comment (<%= @record_coffee.comments.count %>)</p>
+        </li>
+        <li class="list-group-item">
+          <% @record_coffee.comments.each do |comment| %>
+            <%= comment.user.name %>
+            <%= comment.comment %>
+              <% if comment.user == current_user %>
+                <%= link_to "削除", record_coffee_comment_path(comment.record_coffee, comment), method: :delete %>
+              <% end %>
+          <% end %>
+          <%= render 'layouts/errors', obj: @comment %>
+          <%= form_with model: [@record_coffee, @comment] do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", required: true %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </li>
+      </ul>
+          </div>
+        </div>
+      </div>
+    </div>

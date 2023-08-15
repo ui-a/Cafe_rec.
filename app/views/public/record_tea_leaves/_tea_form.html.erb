@@ -1,0 +1,79 @@
+<%= form_with model: @record_tea_leafe do |f| %>
+  <div class="d-flex padding-sm-y">
+    <%= f.label :category_id, "カテゴリー", class: "label-width" %>
+    <%= f.collection_select :category_id, @categories, :id, :name, include_blank: "--選択してください--" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :item_name, '商品名' %>
+    <%= f.text_field :item_name, placeholder: 'オリジナルブレンドティー', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :brand_name, 'ブランド名' %>
+    <%= f.text_field :brand_name, placeholder: 'RecordTea', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, '価格(税込/100gあたり)' %>
+    <%= f.number_field :price, placeholder: '1000', class: 'form-control' %>
+  </div>
+
+  <% if @record_tea_leafe.id.nil? %>
+  <div class="form-group">
+      <%= f.label :total_star, '総合評価' %>
+    <div id="post_raty"></div>
+  </div>
+    <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
+
+  <div class="form-group">
+      <%= f.label :scent_star, '香り' %>
+    <div id="post_raty1"></div>
+  </div>
+    <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
+
+  <div class="form-group">
+      <%= f.label :sweet_star, '甘み' %>
+    <div id="post_raty2"></div>
+  </div>
+    <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
+
+  <div class="form-group">
+      <%= f.label :astringency_star, '渋味' %>
+    <div id="post_raty3"></div>
+  </div>
+    <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
+
+  <div class="form-group">
+      <%= f.label :fresh_star, '清涼感' %>
+    <div id="post_raty4"></div>
+  </div>
+    <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
+
+  <div class="form-group">
+      <%= f.label :easy_star, '飲みやすさ' %>
+    <div id="post_raty5"></div>
+  </div>
+    <% else %>
+      <div class="form-group">
+        <%= render 'star_result', record_tea_leafe: @record_tea_leafe %>
+      </div>
+    <% end %>
+
+  <div class="form-group">
+        <%= f.label :tag, 'タグ(,で区切ると複数タグ登録できます)' %>
+        <%= f.text_field :tag, value: @tag_list, class: 'form-control' %>
+
+  <div class="form-group">
+    <%= f.label :image, '画像' %>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :review, 'レビュー内容' %>
+    <%= f.text_area :review %>
+  </div>
+  <div class="form-group">
+    <% if request.path_info == new_record_tea_leafe_path %>
+  　   <%= f.submit "レビュー"%>
+    <%else%>
+      <%= f.submit "変更を保存"%>
+    <% end%>
+  </div>
+<% end %>

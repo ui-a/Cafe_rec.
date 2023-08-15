@@ -4,10 +4,13 @@ class Public::RecordCoffeesController < ApplicationController
     @record_coffee = RecordCoffee.find(params[:id])
     @user = User.find(@record_coffee.user[:id])
     @tag_list = @record_coffee.tags
-    @coffee_comment = Comment.new
+    @comment = Comment.new
   end
 
   def edit
+    @record_coffee = RecordCoffee.find(params[:id])
+    @tag_list = @record_coffee.tags.pluck(:name).join(',')
+    @categories = Category.all
   end
 
   def new
@@ -24,9 +27,21 @@ class Public::RecordCoffeesController < ApplicationController
       @record_coffee.save_tags(tag_list)
       redirect_to record_coffee_path(@record_coffee), notice: "レビューが投稿されました"
     else
-      render '/records_coffee_new'
+      render :new
     end
   end
+
+  def update
+    @record_coffee = RecordCoffee.find(params[:id])
+    tag_list = params[:record_coffee][:tag].split(',')
+    if @record_coffee.update(record_coffee_params)
+      @record_coffee.save_tags(tag_list)
+      redirect_to record_coffee_path(@record_coffee), notice: "変更を保存しました"
+    else
+      render :edit
+    end
+  end
+
 
   def destroy
     record_coffee = RecordCoffee.find(params[:id])

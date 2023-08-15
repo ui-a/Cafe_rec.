@@ -63,3 +63,9 @@ gem 'dotenv-rails'
 
 # kaminari install
 gem 'kaminari','~> 1.2.1'
+
+# jQuery install
+gem 'jquery-rails'
+
+# ransack install
+gem 'ransack'

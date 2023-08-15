@@ -1,0 +1,113 @@
+総合評価
+<div id="total_star_<%= record_tea_leafe.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#total_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.total_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+香り
+<div id="scent_star_<%= record_tea_leafe.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#scent_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.scent_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+苦味
+<div id="sweet_star_<%= record_tea_leafe.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#sweet_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.sweet_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+酸味
+<div id="astringency_star_<%= record_tea_leafe.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#astringency_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.astringency_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+甘み
+<div id="fresh_star_<%= record_tea_leafe.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#fresh_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.fresh_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+コク
+<div id="easy_star_<%= record_tea_leafe.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#easy_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.easy_star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
