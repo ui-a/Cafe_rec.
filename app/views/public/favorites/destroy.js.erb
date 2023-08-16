@@ -1,2 +1,8 @@
-$("#favorite_buttons_<%= @record_coffee.id %>").html("<%= escape_javascript(render partial: 'public/favorites/coffee_favorite', locals: {record_coffee: @record_coffee}) %>");
-$("#favorite_buttons_<%= @record_tea_leafe.id %>").html("<%= escape_javascript(render partial: 'public/favorites/tea_favorite', locals: {record_tea_leafe: @record_tea_leafe}) %>");
+$("#favorite_coffee_buttons_<%= @record_coffee.id %>").html("<%= escape_javascript(render 'public/favorites/coffee_favorite', record_coffee: @record_coffee) %>");
+$("#favorite_tea_buttons_<%= @record_tea_leafe.id %>").html("<%= escape_javascript(render 'public/favorites/tea_favorite', record_tea_leafe: @record_tea_leafe) %>");
+<!--const ID = favorite_coffee_buttons_<%#= @record_coffee.id %>;-->
+<!--if (ID = favorite_coffee_buttons_<%#= @record_coffee.id %>) {-->
+<!--    console.log($("#favorite_coffee_buttons_<%#= @record_coffee.id %>").html("<%#= escape_javascript(render 'public/favorites/coffee_favorite', record_coffee: @record_coffee) %>");-->
+<!--} else {-->
+<!--    console.log($("#favorite_tea_buttons_<%#= @record_tea_leafe.id %>").html("<%#= escape_javascript(render 'public/favorites/tea_favorite', record_tea_leafe: @record_tea_leafe) %>");-->
+<!--}-->

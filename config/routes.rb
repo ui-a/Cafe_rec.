@@ -30,12 +30,11 @@ end
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    get 'favorites/index'
+    get 'favorites' => 'favorites#index'
     get 'users/index'
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdraw' => 'users#withdraw'
-    get 'search_tag_coffee' => 'record_coffees#search_tag'
-    get 'record_search' => 'record#search'
+    get 'record_search' => 'searches#search'
   end
 
   namespace :admin do

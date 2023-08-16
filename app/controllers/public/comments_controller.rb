@@ -1,16 +1,18 @@
 class Public::CommentsController < ApplicationController
 
   def create
-    if record_coffee = RecordCoffee.find(params[:record_coffee_id])
+    if params[:record_coffee_id].present?
+      record_coffee = RecordCoffee.find(params[:record_coffee_id])
       comment = current_user.comments.new(comment_params)
       comment.record_coffee_id = record_coffee.id
       comment.save
-      redirect_to record_coffee_path(record_coffee)
-    elsif record_tea_leafe = RecordTeaLeafe.find(params[:record_tea_leafe_id])
+      #redirect_to record_coffee_path(record_coffee)
+    elsif params[:record_tea_leafe_id].present?
+      record_tea_leafe = RecordTeaLeafe.find(params[:record_tea_leafe_id])
       comment = current_user.comments.new(comment_params)
       comment.record_tea_leafe_id = record_tea_leafe.id
       comment.save
-      redirect_to record_tea_leafe_path(record_tea_leafe)
+      #redirect_to record_tea_leafe_path(record_tea_leafe)
     else
       render :show
     end
@@ -18,7 +20,7 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_back(fallback_location: root_path)
+    #redirect_back(fallback_location: root_path)
   end
 
 

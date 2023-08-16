@@ -22,7 +22,7 @@ class Public::RecordTeaLeavesController < ApplicationController
     @record_tea_leafe = RecordTeaLeafe.new(record_tea_leafe_params)
     @record_tea_leafe.user_id = current_user.id
     @categories = Category.all
-    tag_list = params[:record_tea_leafe][:tag].split(',')
+    @tag_list = params[:record_tea_leafe][:tag].split(',')
     if @record_tea_leafe.save
       @record_tea_leafe.save_tags(tag_list)
       redirect_to record_tea_leafe_path(@record_tea_leafe), notice: "レビューが投稿されました"
@@ -33,7 +33,7 @@ class Public::RecordTeaLeavesController < ApplicationController
 
   def update
     @record_tea_leafe = RecordTeaLeafe.find(params[:id])
-    tag_list = params[:record_tea_leafe][:tag].split(',')
+    @tag_list = params[:record_tea_leafe][:tag].split(',')
     if @record_tea_leafe.update(record_tea_leafe_params)
       @record_tea_leafe.save_tags(tag_list)
       redirect_to record_tea_leafe_path(@record_tea_leafe), notice: "変更を保存しました"

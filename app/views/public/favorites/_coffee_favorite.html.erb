@@ -3,7 +3,7 @@
         ♥<%= record_coffee.favorites.count %>
           <% end %>
         <% else %>
-          <%= link_to record_coffee_favorites_path(record_coffee), method: :pos, remote: true do %>
+          <%= link_to record_coffee_favorites_path(record_coffee), method: :post, remote: true do %>
         ♡<%= record_coffee.favorites.count %>
           <% end %>
         <% end %>

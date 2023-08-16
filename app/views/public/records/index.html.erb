@@ -1,35 +1,23 @@
 <div class='container px-5 px-sm-0'>
-  <%# render 'layouts/errors', obj: @record %>
   <div class='row'>
     <div class='col-md-3'>
       <%= render 'public/records/sidebar', record: @record %>
     </div>
 
-    <div class='col-md-9'>
-      <% @instances.each do |instance| %>
-        <% if instance.class == "RecordCoffee" %>
+    <<div class="card mb-3" style="max-width: 700px;">
+      <div class="card-header">
+      <% @record_coffees.zip(@record_tea_leaves) do |coffee, tea| %>
+
+        <% if coffee.class.name == "RecordCoffee" %>
           <%# record_coffeeの表示 %>
-          <%= render 'public/record_coffees/coffee_frame', record_coffee: @record_coffee %>
+          
+        <%= render 'public/records/coffee_list', record_coffee: coffee %>
+
         <% else %>
-          <%# record_tea_leafeの表示 %>
-          <%= render 'public/record_tea_leaves/tea_frame', record_tea_leafe: @record_tea_leafe %>
+          <% record_tea_leafeの表示 %>
+
         <% end %>
       <% end %>
-
-    <div class="card mb-3" style="max-width: 600px;">
-      <div class="row">
-        <div class="col-lg-4">
-          <%= image_tag 'no_image.jpg', size: "250x167", alt: '...' %>
-        </div>
-        <div class="col-lg-8">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
   </div>
 </div>

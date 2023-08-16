@@ -42,5 +42,13 @@ class RecordCoffee < ApplicationRecord
       self.tags << tag
     end
   end
+  
+  def self.looks(searches, words)
+    if searches == "perfect_match"
+      @record_coffee = RecordCoffee.where("name LIKE ?", "#{words}")
+    else
+      @record_coffee = RecordCoffee.where("name LIKE ?", "%#{words}%")
+    end
+  end
 
 end

@@ -1,0 +1,10 @@
+<% if @range == "Coffee" %>
+    <% @record_coffees.each do |record_coffee| %>
+        <%= record_coffee.item_name %>
+    <% end %>
+<% else %>
+    <% @record_tea_leaves.each do |record_tea_leafe| %>
+        <%= record_tea_leafe.title %>
+        <%= record_tea_leafe.text %>
+    <% end %>
+<% end %>

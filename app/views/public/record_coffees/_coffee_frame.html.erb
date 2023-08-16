@@ -1,6 +1,6 @@
     <div class="card mb-3" style="max-width: 700px;">
       <div class="card-header">
-        <div id="favorite_buttons_<%= @record_coffee.id %>" >
+        <div id="favorite_coffee_buttons_<%= @record_coffee.id %>" >
           <%= render 'public/favorites/coffee_favorite', record_coffee: @record_coffee %>
         </div>
         <%= record_coffee.item_name %>
@@ -45,18 +45,9 @@
           <p>comment (<%= @record_coffee.comments.count %>)</p>
         </li>
         <li class="list-group-item">
-          <% @record_coffee.comments.each do |comment| %>
-            <%= comment.user.name %>
-            <%= comment.comment %>
-              <% if comment.user == current_user %>
-                <%= link_to "削除", record_coffee_comment_path(comment.record_coffee, comment), method: :delete %>
-              <% end %>
-          <% end %>
-          <%= render 'layouts/errors', obj: @comment %>
-          <%= form_with model: [@record_coffee, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", required: true %>
-            <%= f.submit "送信する" %>
-          <% end %>
+          <div id="coffee_comment">
+          <%= render 'public/comments/coffee_comment', record_coffee: @record_coffee %>
+          </div>
         </li>
       </ul>
           </div>

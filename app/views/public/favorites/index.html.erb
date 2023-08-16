@@ -1,2 +1,20 @@
-<h1>Public::Favorites#index</h1>
-<p>Find me in app/views/public/favorites/index.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <%# render 'layouts/errors', obj: @record %>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
+    </div>
+
+    <div class='col-md-9'>
+      <% if @coffee_favorite.present? %>
+        <% @coffee_favorite.each do |record_coffee| %>
+          <%# record_coffeeの表示 %>
+          <%= record_coffee.item_name %>
+        <% end %>
+        <% else %>
+          <p>いいねしたレビューはありません</p>
+      <% end %>
+
+    </div>
+  </div>
+</div>
