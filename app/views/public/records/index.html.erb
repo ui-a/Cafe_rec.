@@ -4,20 +4,14 @@
       <%= render 'public/records/sidebar', record: @record %>
     </div>
 
-    <<div class="card mb-3" style="max-width: 700px;">
-      <div class="card-header">
       <% @record_coffees.zip(@record_tea_leaves) do |coffee, tea| %>
-
         <% if coffee.class.name == "RecordCoffee" %>
           <%# record_coffeeの表示 %>
-          
-        <%= render 'public/records/coffee_list', record_coffee: coffee %>
-
+          <%= render 'public/records/coffee_list', record_coffee: coffee %>
         <% else %>
-          <% record_tea_leafeの表示 %>
-
+          <%# record_tea_leafeの表示 %>
+          <%= render 'public/records/tea_list', record_tea_leafe: tea %>
         <% end %>
       <% end %>
-    </div>
   </div>
 </div>

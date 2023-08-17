@@ -31,10 +31,11 @@ end
       resource :favorites, only: [:create, :destroy]
     end
     get 'favorites' => 'favorites#index'
-    get 'users/index'
+    get 'users/mypage' => 'users#index'
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdraw' => 'users#withdraw'
     get 'record_search' => 'searches#search'
+    get 'recordtag_search' => 'tags#search'
   end
 
   namespace :admin do

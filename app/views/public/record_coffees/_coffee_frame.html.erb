@@ -24,9 +24,9 @@
                 <%= record_coffee.price.to_s(:delimited) %>円(税込)
               </li>
               <li class="list-group-item">
-           　　   <% @tag_list.each do |list|%>
-         　　　　     <i class="fa-sharp fa-solid fa-tag"></i>
-            　　　　  <%=link_to list.name, search_tag_coffee_path(tag_id: list.id) %>
+                <% @record_coffee_tags.each do |tag| %>
+                <i class="fa-sharp fa-solid fa-tag"></i>
+                <%= link_to tag.name, recordtag_search_path(tag_id: tag.id) %>
                 <% end %>
           　　  </li>
               <li class="list-group-item">

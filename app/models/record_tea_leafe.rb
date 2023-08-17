@@ -42,13 +42,5 @@ class RecordTeaLeafe < ApplicationRecord
       self.tags << tag
     end
   end
-  
-  def self.looks(searches, words)
-    if searches == "perfect_match"
-      @record_tea_leafe = RecordTeaLeafe.where("name LIKE ?", "#{words}")
-    else
-      @record_tea_leafe = RecordTeaLeafe.where("name LIKE ?", "%#{words}%")
-    end
-  end
 
 end

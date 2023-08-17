@@ -3,7 +3,8 @@ class Public::RecordCoffeesController < ApplicationController
   def show
     @record_coffee = RecordCoffee.find(params[:id])
     @user = User.find(@record_coffee.user[:id])
-    @tag_list = @record_coffee.tags
+    @tag_list = @record_coffee.tags.pluck(:name).join(',')
+    @record_coffee_tags = @record_coffee.tags
     @comment = Comment.new
   end
 
@@ -53,6 +54,7 @@ class Public::RecordCoffeesController < ApplicationController
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @record_coffees = @tag.record_coffees
+    @record_tea_leaves = @tag.record_tea_leaves
   end
 
 
@@ -72,7 +74,7 @@ class Public::RecordCoffeesController < ApplicationController
       :sweet_star,
       :rich_star,
       :release,
-      :tagging,
+      :tag_id,
       :image
     )
   end

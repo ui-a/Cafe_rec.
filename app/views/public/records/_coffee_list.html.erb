@@ -1,42 +1,41 @@
 <div class="card mb-3" style="max-width: 700px;">
-      <div class="card-header">
-        <div id="favorite_buttons_<%= record_coffee.id %>" >
-          <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
-        </div>
-        <%= record_coffee.item_name %>
-        <%= record_coffee.user.name %>
-        <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
-      </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <p><%= image_tag record_coffee.get_image(250,167) %></p>
-          <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
-        </div>
-        <div class="col-lg-8">
-          <div class="card-body">
-            <h5 class="card-title"><%= record_coffee.category.name %></h5>
-            <p class="card-text"><%= record_coffee.item_name %></p>
-            <ul class="list-group list-group-flush border-0">
-              <li class="list-group-item">
-                <%= record_coffee.brand_name %>
-              </li>
-              <li class="list-group-item">
-                <%= record_coffee.price.to_s(:delimited) %>円(税込)
-              </li>
-              <li class="list-group-item">
-                <% @tag_list.each do |list| %>
-                    <i class="fa-sharp fa-solid fa-tag"></i>
-                     <%=link_to list.name, search_tag_coffee_path(tag_id: list.id) %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer text-muted">
-        comment (<%= record_coffee.comments.count %>)
-      </div>
-          </div>
-        </div>
+  <div class="card-header">
+    <div id="favorite_buttons_<%= record_coffee.id %>" >
+      <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
+    </div>
+      <%= record_coffee.item_name %>
+      <%= record_coffee.user.name %>
+      <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <p><%= image_tag record_coffee.get_image(250,167) %></p>
+        <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
+    </div>
+    <div class="col-lg-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= record_coffee.category.name %></h5>
+        <p class="card-text"><%= record_coffee.item_name %></p>
+          <ul class="list-group list-group-flush border-0">
+            <li class="list-group-item">
+              <%= record_coffee.brand_name %>
+            </li>
+            <li class="list-group-item">
+              <%= record_coffee.price.to_s(:delimited) %>円(税込)
+            </li>
+            <li class="list-group-item">
+         　　   <i class="fa-sharp fa-solid fa-tag"></i>
+              <%= record_coffee.tags.map(&:name).join(', ') %>
+            </li>
+            <li class="list-group-item">
+              <%= record_coffee.review %>
+            </li>
+          </ul>
       </div>
     </div>
+    <div class="card-footer text-muted">
+      comment (<%= record_coffee.comments.count %>)
+    </div>
+  </div>
+</div>
+</a>

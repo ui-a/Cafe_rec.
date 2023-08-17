@@ -7,12 +7,14 @@
 <!-- 折り畳まれ部分 -->
   <div id="open" style="display:none;clear:both;">
   <!--ここの部分が折りたたまれる＆展開される部分になります。自由に記述してください。-->
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.select :range, options_for_select([['Coffee'], [Tea]]) %>
-      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+          <div class="search_form d-flex justify-content-end">
+         <%= form_with url:record_search_path, method: :get do |f| %>
+      <%= f.select :range, options_for_select([['Coffee'], ['Tea']]) %>
       <%= f.text_field :word %>
       <%= f.submit "検索" %>
     <% end %>
+        </div>
+      
   </div>
 </div>
 <!--// 折り畳まれ部分 -->
