@@ -1,4 +1,5 @@
 class Public::TagController < ApplicationController
+  before_action :authenticate_user!
 
   def search_tag
     @tag_list = Tag.all

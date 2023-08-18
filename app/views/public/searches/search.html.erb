@@ -1,10 +1,17 @@
 <% if @range == "Coffee" %>
-    <% @record_coffees.each do |record_coffee| %>
-        <%= record_coffee.item_name %>
+  <% if @coffee_searches.present? %>
+    <% @coffee_searches.each do |record_coffee| %>
+       <%= render 'public/records/coffee_list', record_coffee: record_coffee %>
     <% end %>
+  <% else %>
+    検索条件に当てはまるレビューはありません。
+  <% end %>
 <% else %>
-    <% @record_tea_leaves.each do |record_tea_leafe| %>
-        <%= record_tea_leafe.title %>
-        <%= record_tea_leafe.text %>
+  <% if @tea_searches.present? %>
+    <% @tea_searches.each do |record_tea_leafe| %>
+      <%= render 'public/records/tea_list', record_tea_leafe: record_tea_leafe %>
     <% end %>
+  <% else %>
+    検索条件に当てはまるレビューはありません。
+  <% end %>
 <% end %>

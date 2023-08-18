@@ -1,4 +1,5 @@
 class Public::RecordCoffeesController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @record_coffee = RecordCoffee.find(params[:id])

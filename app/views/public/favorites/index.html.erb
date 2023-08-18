@@ -6,15 +6,25 @@
     </div>
 
     <div class='col-md-9'>
+      <h4>Coffee</h4>
       <% if @coffee_favorite.present? %>
         <% @coffee_favorite.each do |record_coffee| %>
           <%# record_coffeeの表示 %>
           <%= record_coffee.item_name %>
         <% end %>
         <% else %>
-          <p>いいねしたレビューはありません</p>
+          <p>いいねしたコーヒーのレビューはありません</p>
       <% end %>
-
+      
+      <h4>Tea</h4>
+      <% if @tea_favorite.present? %>
+        <% @tea_favorite.each do |record_tea_leafe| %>
+          <%# record_tea_leafeの表示 %>
+          <%= record_tea_leafe.item_name %>
+        <% end %>
+        <% else %>
+          <p>いいねした紅茶のレビューはありません</p>
+      <% end %>
     </div>
   </div>
 </div>

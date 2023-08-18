@@ -13,8 +13,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-devise_scope :guest_user do
-  post "guest_users/guest_sign_in", to: "guest_users/sessions#guest_sign_in"
+devise_scope :user do
+  post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
 end
 
   root to: 'public/homes#top'
@@ -30,11 +30,15 @@ end
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
+    resources :searches, only: [:index] do
+      collection do
+        get :search
+      end
+    end
     get 'favorites' => 'favorites#index'
     get 'users/mypage' => 'users#index'
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdraw' => 'users#withdraw'
-    get 'record_search' => 'searches#search'
     get 'recordtag_search' => 'tags#search'
   end
 
