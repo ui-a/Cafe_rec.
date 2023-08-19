@@ -6,7 +6,13 @@
     </div>
     <div class='col-md-9'>
       <h5>投稿フォーム</h5>
-      <%= render 'coffee_form', record: @record_coffee %>
+        <%= form_with model: @record_coffee do |f| %>
+          <%= render 'coffee_form', f: f %>
+        <div class="form-group">
+      <%= f.submit "投稿"%>
+  </div>
+<% end %>
+
     </div>
   </div>
 </div>

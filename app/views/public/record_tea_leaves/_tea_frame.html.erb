@@ -42,11 +42,11 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <p>comment (<%#= @record_tea_leafe.comments.count %>)</p>
+          <p>comment (<%#= record_tea_leafe.comments.count %>)</p>
         </li>
         <li class="list-group-item">
           <div id="tea_comment">
-          <%= render 'public/comments/tea_comment', record_tea_leafe: @record_tea_leafe %>
+          <%= render 'public/comments/tea_comment', record_tea_leafe: record_tea_leafe %>
           </div>
         </li>
       </ul>

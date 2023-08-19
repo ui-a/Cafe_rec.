@@ -1,4 +1,13 @@
-<div class="card mb-3" style="max-width: 700px;">
+<div class='container px-3 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
+    </div>
+
+    <div class='col-md-9 py-5'>
+      <% @record_coffees.each do |record_coffee| %>
+
+      <div class="card mb-3" style="max-width: 700px;">
   <div class="card-header">
     <div id="favorite_buttons_<%= record_coffee.id %>" >
       <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
@@ -33,9 +42,14 @@
           </ul>
       </div>
     </div>
-  </div>
-  <div class="card-footer text-muted">
-    comment (<%= record_coffee.comments.count %>)
-    <%= link_to 'レビューを見る', record_coffee_path(record_coffee.id) %>
+    </div>
+    <div class="card-footer text-muted">
+      comment (<%= record_coffee.comments.count %>)
+      <%= link_to 'レビューを見る', record_coffee_path(record_coffee.id) %>
+    </div>
+</div>
+
+      <% end %>
+    </div>
   </div>
 </div>

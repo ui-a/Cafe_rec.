@@ -22,11 +22,11 @@ end
   scope module: :public do
     get 'about' => 'homes#about', as: 'about'
     resources :records, only: [:index, :show]
-    resources :record_tea_leaves, only: [:show, :new, :create, :edit, :update, :destroy] do
+    resources :record_tea_leaves, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :record_coffees, only: [:show, :new, :create, :edit, :update, :destroy] do
+    resources :record_coffees, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end

@@ -16,8 +16,8 @@ class Public::FavoritesController < ApplicationController
       favorite.save
       #redirect_to record_coffee_path(record_coffee)
     elsif params[:record_tea_leafe_id].present?
-      record_tea_leafe = RecordTeaLeafe.find(params[:record_tea_leafe_id])
-      favorite = current_user.favorites.new(record_tea_leafe_id: record_tea_leafe.id)
+      @record_tea_leafe = RecordTeaLeafe.find(params[:record_tea_leafe_id])
+      favorite = current_user.favorites.new(record_tea_leafe_id: @record_tea_leafe.id)
       favorite.save
       #redirect_to record_tea_leafe_path(record_tea_leafe)
     else

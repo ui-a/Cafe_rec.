@@ -1,0 +1,12 @@
+          <% record_tea_leafe.comments.each do |comment| %>
+            <%= comment.user.name %>
+            <%= comment.comment %>
+              <% if comment.user == current_user %>
+                <%= link_to "削除", record_tea_leafe_comment_path(comment.record_tea_leafe, comment), method: :delete, remote: true %>
+              <% end %>
+          <% end %>
+          <%= render 'layouts/errors', obj: @comment %>
+          <%= form_with model: [record_tea_leafe, @comment], local: false do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", required: true %>
+            <%= f.submit "送信する" %>
+          <% end %>

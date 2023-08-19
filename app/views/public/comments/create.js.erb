@@ -1,2 +1,7 @@
-$("#coffee_comment").html("<%= j(render 'public/comments/coffee_comment', record_coffee: @record_coffee) %>");
+<% if @record_coffee %>
+$(".coffee_comment").html("<%= j(render 'public/comments/coffee_comment', record_coffee: record_coffee) %>");
 $("textarea").val('')
+<% else %>
+$(".tea_comment").html("<%= j(render 'public/comments/tea_comment', record_tea_leafe: record_tea_leafe) %>");
+$("textarea").val('')
+<% end %>
