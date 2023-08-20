@@ -1,6 +1,6 @@
 <div class="card mb-3" style="max-width: 700px;">
   <div class="card-header">
-    <div id="favorite_coffee_buttons_<%= record_coffee.id %>" >
+    <div id="favorite_coffee_btn_<%= record_coffee.id %>" >
       <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
     </div>
       <%= record_coffee.item_name %>
@@ -10,11 +10,11 @@
   <div class="row">
     <div class="col-lg-4">
       <p><%= image_tag record_coffee.get_image(250,167) %></p>
-        <%= render 'star_result', record_coffee: record_coffee %>
+        <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
     </div>
     <div class="col-lg-8">
       <div class="card-body">
-        <h5 class="card-title"><%= record_coffee.category.name %></h5>
+        <h5 class="card-title">Coffee</h5>
           <p class="card-text"><%= record_coffee.item_name %></p>
             <ul class="list-group list-group-flush border-0">
               <li class="list-group-item">
@@ -24,10 +24,10 @@
                 <%= record_coffee.price.to_s(:delimited) %>円(税込)
               </li>
               <li class="list-group-item">
-                <% @record_coffee_tags.each do |tag| %>
+                <%# @record_coffee_tags.each do |tag| %>
                 <i class="fa-sharp fa-solid fa-tag"></i>
-                <%= link_to tag.name, recordtag_search_path(tag_id: tag.id) %>
-                <% end %>
+                <%#= link_to tag.name, tag_record_coffees_path(record_coffee_tag_id: tag.id) %>
+                <%# end %>
           　　  </li>
               <li class="list-group-item">
                 <%= record_coffee.review %>
@@ -46,7 +46,7 @@
         </li>
         <li class="list-group-item">
           <div id="coffee_comment">
-          <%= render 'public/comments/coffee_comment', record_coffee: record_coffee %>
+          <%= render 'public/comments/coffee_comment', record_coffee: record_coffee, comment: comment %>
           </div>
         </li>
       </ul>

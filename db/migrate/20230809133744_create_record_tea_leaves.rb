@@ -2,7 +2,6 @@ class CreateRecordTeaLeaves < ActiveRecord::Migration[6.1]
   def change
     create_table :record_tea_leaves do |t|
       t.integer :user_id, null: false
-      t.integer :category_id, null: false
       t.string :item_name, null: false
       t.string :brand_name, null: false
       t.integer :price, null: false

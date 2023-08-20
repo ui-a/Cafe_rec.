@@ -52,19 +52,14 @@ ActiveRecord::Schema.define(version: 2023_08_09_133744) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "record_coffee_id"
-    t.integer "record_tea_lea_id"
+    t.string "record_drinkable_type"
+    t.integer "record_drinkable_id"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_drinkable_type", "record_drinkable_id"], name: "index_comments_on_record_drinkable_type_and_record_drinkable_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -77,7 +72,6 @@ ActiveRecord::Schema.define(version: 2023_08_09_133744) do
 
   create_table "record_coffees", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "category_id", null: false
     t.string "item_name", null: false
     t.string "brand_name", null: false
     t.integer "price", null: false
@@ -95,7 +89,6 @@ ActiveRecord::Schema.define(version: 2023_08_09_133744) do
 
   create_table "record_tea_leaves", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "category_id", null: false
     t.string "item_name", null: false
     t.string "brand_name", null: false
     t.integer "price", null: false
@@ -118,10 +111,11 @@ ActiveRecord::Schema.define(version: 2023_08_09_133744) do
 
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
-    t.integer "record_coffee_id"
-    t.integer "record_tea_leafe_id"
+    t.string "record_drinkable_type"
+    t.integer "record_drinkable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_drinkable_type", "record_drinkable_id"], name: "index_taggings_on_record_drinkable_type_and_record_drinkable_id"
   end
 
   create_table "tags", force: :cascade do |t|

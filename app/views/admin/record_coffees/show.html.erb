@@ -1,0 +1,51 @@
+<div class="container w-75">
+  <div class="margin-y">
+    <div class="d-flex align-items-center justify-content-between">
+      <h4>Coffee投稿一覧</h4>
+    </div>
+
+<table class='table'>
+  <tr>
+    <td>name</td>
+    <td><%= @record_coffee.user.name %></td>
+  </tr>
+  <tr>
+    <td>商品名</td>
+    <td><%= @record_coffee.item_name %></td>
+  </tr>
+  <tr>
+    <td>ブランド名</td>
+    <td><%= @record_coffee.brand_name %></td>
+  </tr>
+    <tr>
+    <td>価格</td>
+    <td><%= @record_coffee.price.to_s(:delimited) %>円(税込)</td>
+  </tr>
+  <tr>
+    <td>タグ</td>
+    <td>
+      <% @record_coffee_tags.each do |tag| %>
+        <i class="fa-sharp fa-solid fa-tag"></i>
+        <%= link_to tag.name, recordtag_search_path(tag_id: tag.id) %>
+      <% end %></td>
+  </tr>
+  <tr>
+    <td>評価</td>
+    <td><%= render 'public/record_coffees/star_result', record_coffee: @record_coffee %></td>
+  </tr>
+  <tr>
+    <td>レビュー</td>
+    <td><%= @record_coffee.review %></td>
+  </tr>
+  <tr>
+    <td>レビュー</td>
+    <td>
+      <% if @record_coffee.release %>
+        <span>公開</span>
+      <% else %>
+        <span>非公開</span>
+      <% end %>
+      </td>
+  </tr>
+
+</table>

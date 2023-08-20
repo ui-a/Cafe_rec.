@@ -2,11 +2,11 @@
             <%= comment.user.name %>
             <%= comment.comment %>
               <% if comment.user == current_user %>
-                <%= link_to "削除", record_coffee_comment_path(comment.record_coffee, comment), method: :delete, remote: true %>
+                <%= link_to "削除", record_coffee_comment_path(comment.record_drinkable, comment), method: :delete, remote: true %>
               <% end %>
           <% end %>
-          <%= render 'layouts/errors', obj: @comment %>
-          <%= form_with model: [record_coffee, @comment], local: false do |f| %>
+          <%= render 'layouts/errors', obj: comment %>
+          <%= form_with model: [record_coffee, comment], local: false do |f| %>
             <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", required: true %>
             <%= f.submit "送信する" %>
           <% end %>

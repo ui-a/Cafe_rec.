@@ -1,5 +1,5 @@
 <% if @record_coffee %>
-$("#favorite_coffee_buttons_<%= @record_coffee.id %>").html("<%= j(render 'public/favorites/coffee_favorite', record_coffee: @record_coffee) %>");
+$("#favorite_coffee_btn_<%= @record_coffee.id %>").html("<%= j(render 'public/favorites/coffee_favorite', record_coffee: @record_coffee) %>");
 <% else %>
-$("#favorite_tea_buttons_<%= @record_tea_leafe.id %>").html("<%= j(render 'public/favorites/tea_favorite', record_tea_leafe: @record_tea_leafe) %>");
+$("#favorite_tea_btn_<%= @record_tea_leafe.id %>").html("<%= j(render 'public/favorites/tea_favorite', record_tea_leafe: @record_tea_leafe) %>");
 <% end %>

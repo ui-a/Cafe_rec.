@@ -1,0 +1,31 @@
+<div class="container w-75">
+  <div class="margin-y">
+    <div class="d-flex align-items-center justify-content-between">
+      <h4>Tea投稿一覧</h4>
+    </div>
+    <%= link_to "Coffee", admin_record_coffees_path %> | <%= link_to "Tea", admin_record_tea_leaves_path %>
+    <table class='table table-hover table-light margin-y'>
+      <thead>
+        <tr>
+          <th class="bg-brown">投稿日時</th>
+          <th class="bg-brown">投稿者</th>
+          <th class="bg-brown">商品名</th>
+          <th class="bg-brown">ブランド名</th>
+          <th class="bg-brown">公開/非公開</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @record_tea_leaves.each do |record_tea_leafe| %>
+        <tr>
+          <td><%= link_to record_tea_leafe.created_at.strftime('%Y/%m/%d'), admin_record_tea_leafe_path(record_tea_leafe.id) %></td>
+          <td><%= link_to record_tea_leafe.user.name, admin_record_tea_leaves_path(record_tea_leafe.user.id) %></td>
+          <td><%= record_tea_leafe.item_name %></td>
+          <td><%= record_tea_leafe.brand_name %></td>
+          <td><%= record_tea_leafe.release %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%#= paginate @orders %>
+</div>

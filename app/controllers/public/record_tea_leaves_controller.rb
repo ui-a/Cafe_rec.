@@ -1,29 +1,31 @@
 class Public::RecordTeaLeavesController < ApplicationController
   before_action :authenticate_user!
-  
+
+  def index
+    @record_tea_leaves = RecordTeaLeafe.all
+  end
+
   def show
     @record_tea_leafe = RecordTeaLeafe.find(params[:id])
     @user = User.find(@record_tea_leafe.user[:id])
-    @tag_list = @record_tea_leafe.tags.pluck(:name).join(',')
-    @record_tea_leafe_tags = @record_tea_leafe.tags
+    #comment.record_drinkable = @record_coffee
+    #@tag_list = @record_tea_leafe.tags.pluck(:name).join(',')
+    #@record_tea_leafe_tags = @record_tea_leafe.tags
     @comment = Comment.new
   end
 
   def edit
     @record_tea_leafe = RecordTeaLeafe.find(params[:id])
     @tag_list = @record_tea_leafe.tags.pluck(:name).join(',')
-    @categories = Category.all
   end
 
   def new
     @record_tea_leafe = RecordTeaLeafe.new
-    @categories = Category.all
   end
 
   def create
     @record_tea_leafe = RecordTeaLeafe.new(record_tea_leafe_params)
     @record_tea_leafe.user_id = current_user.id
-    @categories = Category.all
     tag_list = params[:record_tea_leafe][:tag].split(',')
     if @record_tea_leafe.save
       @record_tea_leafe.save_tags(tag_list)
@@ -62,7 +64,6 @@ class Public::RecordTeaLeavesController < ApplicationController
 
   def record_tea_leafe_params
     params.require(:record_tea_leafe).permit(
-      :category_id,
       :item_name,
       :brand_name,
       :price,

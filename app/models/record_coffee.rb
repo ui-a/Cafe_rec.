@@ -3,11 +3,10 @@ class RecordCoffee < ApplicationRecord
   has_one_attached :image
 
   belongs_to :user
-  belongs_to :category
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy, as: :record_drinkable
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
-  has_many :taggings, dependent: :destroy
+  has_many :taggings, dependent: :destroy, as: :record_drinkable
   has_many :tags, through: :taggings
 
   validates :item_name, presence:true
@@ -23,7 +22,7 @@ class RecordCoffee < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
@@ -41,12 +40,6 @@ class RecordCoffee < ApplicationRecord
       tag = Tag.find_or_create_by(name:new_name)
       self.tags << tag
     end
-  end
-  
-  def search_tag
-    @tag_list = Tag.all
-    @tag = Tag.find(params[:tag_id])
-    @record_coffees = @tag.record_coffees
   end
 
 

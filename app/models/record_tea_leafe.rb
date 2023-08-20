@@ -1,13 +1,12 @@
 class RecordTeaLeafe < ApplicationRecord
-  
+
   has_one_attached :image
 
   belongs_to :user
-  belongs_to :category
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy, as: :record_drinkable
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
-  has_many :taggings, dependent: :destroy
+  has_many :taggings, dependent: :destroy, as: :record_drinkable
   has_many :tags, through: :taggings
 
   validates :item_name, presence:true
@@ -23,7 +22,7 @@ class RecordTeaLeafe < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end

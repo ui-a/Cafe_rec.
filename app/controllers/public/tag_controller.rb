@@ -4,6 +4,9 @@ class Public::TagController < ApplicationController
   def search_tag
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
-    @record_coffees = @tag.record_coffees.all
+    @taggings = Tagging.where(tag_id: params[:tag_id])
+    @coffee_taggings = @taggings.where(record_drinkable_type: "RecordCoffee")
+    @record_coffees = RecordCoffee.all
   end
+  
 end

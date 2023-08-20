@@ -1,6 +1,6 @@
 <div class="card mb-3" style="max-width: 700px;">
   <div class="card-header">
-    <div id="favorite_buttons_<%= record_coffee.id %>" >
+    <div id="favorite_coffee_btn_<%= record_coffee.id %>" >
       <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
     </div>
       <%= record_coffee.item_name %>
@@ -14,7 +14,7 @@
     </div>
     <div class="col-lg-8">
       <div class="card-body">
-        <h5 class="card-title"><%= record_coffee.category.name %></h5>
+        <h5 class="card-title">Coffee</h5>
         <p class="card-text"><%= record_coffee.item_name %></p>
           <ul class="list-group list-group-flush border-0">
             <li class="list-group-item">
@@ -33,9 +33,9 @@
           </ul>
       </div>
     </div>
-  </div>
-  <div class="card-footer text-muted">
-    comment (<%= record_coffee.comments.count %>)
-    <%= link_to 'レビューを見る', record_coffee_path(record_coffee.id) %>
-  </div>
+    </div>
+    <div class="card-footer text-muted">
+      comment (<%= record_coffee.comments.count %>)
+      <%= link_to 'レビューを見る', record_coffee_path(record_coffee.id) %>
+    </div>
 </div>
