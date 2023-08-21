@@ -1,0 +1,56 @@
+<div class="card mb-3" style="max-width: 700px;">
+  <div class="card-header">
+    <div id="favorite_tea_btn_<%= record_tea_leafe.id %>" >
+      <%= render 'public/favorites/tea_favorite', record_tea_leafe: record_tea_leafe %>
+    </div>
+      <%= record_tea_leafe.item_name %>
+      <%= record_tea_leafe.user.name %>
+      <%= record_tea_leafe.created_at.strftime('%Y/%m/%d') %>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <p><%= image_tag record_tea_leafe.get_image(250,167) %></p>
+        <%= render 'public/record_tea_leaves/star_result', record_tea_leafe: record_tea_leafe %>
+    </div>
+    <div class="col-lg-8">
+      <div class="card-body">
+        <h5 class="card-title">Coffee</h5>
+          <p class="card-text"><%= record_tea_leafe.item_name %></p>
+            <ul class="list-group list-group-flush border-0">
+              <li class="list-group-item">
+                <%= record_tea_leafe.brand_name %>
+              </li>
+              <li class="list-group-item">
+                <%= record_tea_leafe.price.to_s(:delimited) %>円(税込)
+              </li>
+              <li class="list-group-item">
+                <%# @record_coffee_tags.each do |tag| %>
+                <i class="fa-sharp fa-solid fa-tag"></i>
+                <%#= link_to tag.name, tag_record_coffees_path(record_coffee_tag_id: tag.id) %>
+                <%# end %>
+          　　  </li>
+              <li class="list-group-item">
+                <%= record_tea_leafe.review %>
+                <% if record_tea_leafe.user == current_user %>
+                  <%= link_to 'Edit', edit_record_tea_leafe_path(record_tea_leafe), class: "btn btn-sm btn-success" %>
+                  <%= link_to 'Destroy', record_tea_leafe, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p>comment (<%= record_tea_leafe.comments.count %>)</p>
+        </li>
+        <li class="list-group-item">
+          <div id="tea_comment">
+          <%= render 'public/comments/tea_comment', record_tea_leafe: record_tea_leafe, comment: comment %>
+          </div>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>

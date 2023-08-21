@@ -9,7 +9,7 @@
 <% else %>
   <% if @tea_searches.present? %>
     <% @tea_searches.each do |record_tea_leafe| %>
-      <%= render 'public/records/tea_list', record_tea_leafe: record_tea_leafe %>
+      <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
     <% end %>
   <% else %>
     検索条件に当てはまるレビューはありません。
