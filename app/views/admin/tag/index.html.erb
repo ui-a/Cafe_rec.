@@ -1,2 +1,28 @@
-<h1>Admin::Tag#index</h1>
-<p>Find me in app/views/admin/tag/index.html.erb</p>
+<div class="container w-75">
+  <div class="margin-y">
+    <h4>会員一覧</h4>
+    <table class='table table-hover margin-y table-light'>
+      <thead>
+        <tr>
+          <th class="bg-brown">会員ID</th>
+          <th class="bg-brown">タグ名</th>
+          <th class="bg-brown">投稿数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tags.each do |tag| %>
+          <tr>
+            <td><%= tag.id %></td>
+            <td><%= tag.name %></td>
+            <td><%=  %></td>
+            <td>
+                <%= link_to "編集する", edit_admin_tag_path(@tag), class: "btn btn-success" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <%= paginate @users %>
+</div>

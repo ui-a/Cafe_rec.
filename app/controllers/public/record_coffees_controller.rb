@@ -52,7 +52,7 @@ class Public::RecordCoffeesController < ApplicationController
     redirect_to records_path
   end
 
-  def search
+  def search_coffeetags
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @taggings = Tagging.where(tag_id: params[:tag_id])

@@ -1,3 +1,6 @@
+<div class="container" style="width: fit-content">
+  <div class="sub_container_position">
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -19,8 +22,20 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class:'btn btn-outline-secondary mt-1' %>
   </div>
 <% end %>
 
 <%= render "public/shared/links" %>
+
+<div class="row">
+    新規登録はこちら<br>
+          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        </div>
+        <div class="row">
+    ゲストログインはこちら<br>
+          <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
+
+  </div>
+</div>

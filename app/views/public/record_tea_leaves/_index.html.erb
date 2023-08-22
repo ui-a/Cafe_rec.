@@ -1,0 +1,41 @@
+<div class="card mb-3" style="max-width: 700px;">
+  <div class="card-header">
+    <div id="favorite_tea_btn_<%= record_tea_leafe.id %>" >
+      <%= render 'public/favorites/tea_favorite', record_tea_leafe: record_tea_leafe %>
+    </div>
+      <%= record_tea_leafe.item_name %>
+      <%= record_tea_leafe.user.name %>
+      <%= record_tea_leafe.created_at.strftime('%Y/%m/%d') %>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <p><%= image_tag record_tea_leafe.get_image(250,167) %></p>
+        <%= render 'public/record_tea_leaves/star_result', record_tea_leafe: record_tea_leafe %>
+    </div>
+    <div class="col-lg-8">
+      <div class="card-body">
+        <h5 class="card-title">Tea</h5>
+        <p class="card-text"><%= record_tea_leafe.item_name %></p>
+          <ul class="list-group list-group-flush border-0">
+            <li class="list-group-item">
+              <%= record_tea_leafe.brand_name %>
+            </li>
+            <li class="list-group-item">
+              <%= record_tea_leafe.price.to_s(:delimited) %>円(税込)
+            </li>
+            <li class="list-group-item">
+         　　   <i class="fa-sharp fa-solid fa-tag"></i>
+              <%= record_tea_leafe.tags.map(&:name).join(', ') %>
+            </li>
+            <li class="list-group-item">
+              <%= record_tea_leafe.review %>
+            </li>
+          </ul>
+      </div>
+    </div>
+    </div>
+    <div class="card-footer text-muted">
+      comment (<%= record_tea_leafe.comments.count %>)
+      <%= link_to 'レビューを見る', record_tea_leafe_path(record_tea_leafe.id) %>
+    </div>
+</div>

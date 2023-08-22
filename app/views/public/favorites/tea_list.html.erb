@@ -1,0 +1,8 @@
+      <h4>Tea</h4>
+      <% if @tea_favorite_list.present? %>
+        <% @tea_favorite_list.each do |record_tea_leafe| %>
+          <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
+        <% end %>
+        <% else %>
+          <p>いいねした紅茶のレビューはありません</p>
+      <% end %>

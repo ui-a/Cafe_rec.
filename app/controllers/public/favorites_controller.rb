@@ -1,12 +1,16 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_user!
 
-  def index
+  def coffee_list
     @user = current_user
     coffee_favorites = Favorite.where(user_id: @user.id).pluck(:record_coffee_id)
+    @coffee_favorite_list = RecordCoffee.find(coffee_favorites)
+  end
+
+  def tea_list
+    @user = current_user
     tea_favorites = Favorite.where(user_id: @user.id).pluck(:record_tea_leafe_id)
-    @coffee_favorite = RecordCoffee.find(coffee_favorites)
-    #@tea_favorite = RecordTeaLeafe.find(tea_favorites)
+    @tea_favorite_list = RecordTeaLeafe.find(tea_favorites)
   end
 
   def create

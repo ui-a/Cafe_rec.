@@ -8,7 +8,7 @@
       退会する場合は、「退会する」をクリックしてください。
     </p>
     <div >
-      <%= link_to "退会しない", users_index_path, class: "btn btn-primary padding-x margin-x" %>
+      <%= link_to "退会しない", users_mypage_path, class: "btn btn-primary padding-x margin-x" %>
       <%= link_to "退会する", users_withdraw_path, method: :PATCH, class: "btn btn-danger padding-x margin-x", "data-confirm"=>"本当に退会しますか？" %>
     </div>
 

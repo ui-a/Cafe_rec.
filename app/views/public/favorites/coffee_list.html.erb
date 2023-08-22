@@ -1,0 +1,19 @@
+<div class='container px-5 px-sm-0'>
+  <%# render 'layouts/errors', obj: @record %>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
+    </div>
+
+    <div class='col-md-9'>
+      <h4>Coffee</h4>
+      <% if @coffee_favorite_list.present? %>
+        <% @coffee_favorite_list.each do |record_coffee| %>
+          <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
+        <% end %>
+        <% else %>
+          <p>いいねしたコーヒーのレビューはありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>

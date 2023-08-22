@@ -35,13 +35,13 @@ end
         get :search
       end
     end
-    get 'favorites' => 'favorites#index'
+
+    get 'favorites_coffee' => 'favorites#coffee_list'
+    get 'favorites_tea' => 'favorites#tea_list'
     get 'users/mypage' => 'users#index'
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdraw' => 'users#withdraw'
-    resources :tags do
-      get 'record_coffees' => 'recoed_coffees#search'
-    end
+    get 'search_coffeetags' => 'recoed_coffees#search'
   end
 
   namespace :admin do

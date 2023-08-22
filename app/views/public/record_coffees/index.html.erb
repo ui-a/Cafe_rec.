@@ -5,50 +5,18 @@
     </div>
 
     <div class='col-md-9 py-5'>
-      <% @record_coffees.each do |record_coffee| %>
+        <h4>Coffee Review</h4>
 
-      <div class="card mb-3" style="max-width: 700px;">
-  <div class="card-header">
-    <div id="favorite_coffee_btn_<%= record_coffee.id %>" >
-      <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
-    </div>
-      <%= record_coffee.item_name %>
-      <%= record_coffee.user.name %>
-      <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
-  </div>
-  <div class="row">
-    <div class="col-lg-4">
-      <p><%= image_tag record_coffee.get_image(250,167) %></p>
-        <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
-    </div>
-    <div class="col-lg-8">
-      <div class="card-body">
-        <h5 class="card-title">Coffee</h5>
-        <p class="card-text"><%= record_coffee.item_name %></p>
-          <ul class="list-group list-group-flush border-0">
-            <li class="list-group-item">
-              <%= record_coffee.brand_name %>
-            </li>
-            <li class="list-group-item">
-              <%= record_coffee.price.to_s(:delimited) %>円(税込)
-            </li>
-            <li class="list-group-item">
-         　　   <i class="fa-sharp fa-solid fa-tag"></i>
-              <%= record_coffee.tags.map(&:name).join(', ') %>
-            </li>
-            <li class="list-group-item">
-              <%= record_coffee.review %>
-            </li>
-          </ul>
+      <div class="d-flex justify-content-end mx-2">
+        <%= link_to new_record_coffee_path do %>
+          <i class="fa-solid fa-circle-plus fa-2x" style="color: #401910;"></i>
+        <% end %>
+        <%= link_to favorites_coffee_path do %>
+          <i class="fa-solid fa-heart  fa-2x" style="color: #bf2626;"></i>
+        <% end %>
       </div>
-    </div>
-    </div>
-    <div class="card-footer text-muted">
-      comment (<%= record_coffee.comments.count %>)
-      <%= link_to 'レビューを見る', record_coffee_path(record_coffee.id) %>
-    </div>
-</div>
-
+      <% @record_coffees.each do |record_coffee| %>
+        <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
       <% end %>
     </div>
   </div>

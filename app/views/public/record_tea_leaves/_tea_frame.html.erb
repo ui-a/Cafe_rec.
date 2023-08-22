@@ -24,10 +24,10 @@
                 <%= record_tea_leafe.price.to_s(:delimited) %>円(税込)
               </li>
               <li class="list-group-item">
-                <%# @record_coffee_tags.each do |tag| %>
+                <% record_tea_leafe_tags.each do |tag| %>
                 <i class="fa-sharp fa-solid fa-tag"></i>
-                <%#= link_to tag.name, tag_record_coffees_path(record_coffee_tag_id: tag.id) %>
-                <%# end %>
+                <%= link_to tag.name, tag_record_coffees_path(record_coffee_tag_id: tag.id) %>
+                <% end %>
           　　  </li>
               <li class="list-group-item">
                 <%= record_tea_leafe.review %>

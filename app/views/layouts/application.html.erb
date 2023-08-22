@@ -15,6 +15,11 @@
     <%= render 'layouts/header' %>
 
     <main class="mb-auto">
+      <% if flash[:notice].present? %>
+    <div class="text-center margin-y">
+      <%= flash[:notice]%>
+    </div>
+      <% end %>
     <%= yield %>
     </main>
     <footer class="bg-dark text-white pt-3 pb-2">

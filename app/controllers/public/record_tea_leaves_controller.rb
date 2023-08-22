@@ -8,7 +8,6 @@ class Public::RecordTeaLeavesController < ApplicationController
   def show
     @record_tea_leafe = RecordTeaLeafe.find(params[:id])
     @user = User.find(@record_tea_leafe.user[:id])
-    #comment.record_drinkable = @record_coffee
     @tag_list = @record_tea_leafe.tags.pluck(:name).join(',')
     @record_tea_leafe_tags = @record_tea_leafe.tags
     @comment = Comment.new
