@@ -2,7 +2,7 @@ class Public::RecordTeaLeavesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @record_tea_leaves = RecordTeaLeafe.all
+    @record_tea_leaves = RecordTeaLeafe.all.order(created_at: :desc)
   end
 
   def show
@@ -52,9 +52,11 @@ class Public::RecordTeaLeavesController < ApplicationController
     redirect_to records_path
   end
 
-  def search_tag
+  def search
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
+    @taggings = Tagging.where(tag_id: params[:tag_id])
+    @tea_taggings = @taggings.where(record_drinkable_type: "RecordTeaLeafe")
     @record_tea_leaves = @tag.record_tea_leaves
   end
 

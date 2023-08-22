@@ -1,0 +1,7 @@
+<h2>タグが<%= @tag.name %>の投稿一覧</h2>
+
+    <div class='col-md-9 py-5'>
+      <% @record_tea_leaves.each do |record_tea_leafe| %>
+        <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
+      <% end %>
+    </div>

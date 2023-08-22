@@ -1,11 +1,5 @@
 <h2>タグが<%= @tag.name %>の投稿一覧</h2>
 
-<% @tag_list.each do |list|%>
-    <!--<i class="fa-sharp fa-solid fa-tag"></i>-->
-    <%=link_to list.name,search_tag_path(record_coffee_tag_id: list.id) %>
-    <%#="(#{list.record_drinkable.count})" %>
-<% end %>
-
     <div class='col-md-9 py-5'>
       <% @record_coffees.each do |record_coffee| %>
         <%= render 'public/record_coffees/index', record_coffee: record_coffee %>

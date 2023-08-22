@@ -1,11 +1,11 @@
 <div class="card mb-3" style="max-width: 700px;">
   <div class="card-header">
+    <%= record_coffee.item_name %>
+    <%= record_coffee.user.name %>
+    <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
     <div id="favorite_coffee_btn_<%= record_coffee.id %>" >
       <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
     </div>
-      <%= record_coffee.item_name %>
-      <%= record_coffee.user.name %>
-      <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
   </div>
   <div class="row">
     <div class="col-lg-4">
@@ -30,7 +30,9 @@
                 <% end %>
           　　  </li>
               <li class="list-group-item">
+                <div class="border border-secondary w-100 p-3">
                 <%= record_coffee.review %>
+                </div>
                 <% if record_coffee.user == current_user %>
                   <%= link_to 'Edit', edit_record_coffee_path(record_coffee), class: "btn btn-sm btn-success" %>
                   <%= link_to 'Destroy', record_coffee, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
@@ -41,9 +43,6 @@
         </div>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <p>comment (<%= record_coffee.comments.count %>)</p>
-        </li>
         <li class="list-group-item">
           <div id="coffee_comment">
           <%= render 'public/comments/coffee_comment', record_coffee: record_coffee, comment: comment %>

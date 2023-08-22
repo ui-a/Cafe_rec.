@@ -21,6 +21,12 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.new
+    if params[:record_coffee_id].present?
+      @record_coffee = RecordCoffee.find(params[:record_coffee_id])
+    elsif params[:record_tea_leafe_id].present?
+      @record_tea_leafe = RecordTeaLeafe.find(params[:record_tea_leafe_id])
+    end
     Comment.find(params[:id]).destroy
     #redirect_back(fallback_location: root_path)
   end

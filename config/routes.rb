@@ -35,13 +35,18 @@ end
         get :search
       end
     end
+    
+    get 'users/mypage' => 'users#index'
+    get 'users/record' => 'users#show'
+    get 'users/setting/edit' => 'users#edit'
+    patch 'users/setting' => 'users#withdraw'
+    get 'users/confirm' => 'users#confirm'
+    patch 'users/withdraw' => 'users#withdraw'
 
     get 'favorites_coffee' => 'favorites#coffee_list'
     get 'favorites_tea' => 'favorites#tea_list'
-    get 'users/mypage' => 'users#index'
-    get 'users/confirm' => 'users#confirm'
-    patch 'users/withdraw' => 'users#withdraw'
-    get 'search_coffeetags' => 'recoed_coffees#search'
+    get 'search_coffeetags' => 'record_coffees#search'
+    get 'search_teatags' => 'record_tea_leaves#search'
   end
 
   namespace :admin do

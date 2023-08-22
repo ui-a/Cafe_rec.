@@ -2,7 +2,7 @@ class Public::RecordCoffeesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @record_coffees = RecordCoffee.all
+    @record_coffees = RecordCoffee.all.order(created_at: :desc)
   end
 
   def show
@@ -52,12 +52,12 @@ class Public::RecordCoffeesController < ApplicationController
     redirect_to records_path
   end
 
-  def search_coffeetags
+  def search
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @taggings = Tagging.where(tag_id: params[:tag_id])
     @coffee_taggings = @taggings.where(record_drinkable_type: "RecordCoffee")
-    @record_coffees = RecordCoffee.all
+    @record_coffees = @tag.record_coffees
   end
 
   private

@@ -6,6 +6,15 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
   def withdraw
     @user = User.find(current_user.id)
     @user.update(is_deleted: true)

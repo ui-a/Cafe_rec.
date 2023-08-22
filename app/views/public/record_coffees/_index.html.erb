@@ -4,7 +4,7 @@
       <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
     </div>
       <%= record_coffee.item_name %>
-      <%= link_to record_coffee.user.name, record_coffees_path(record_coffee.user.id) %>
+      <%= link_to record_coffee.user.name, record_coffees_path(record_coffee) %>
       <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
   </div>
   <div class="row">
@@ -35,7 +35,9 @@
     </div>
     </div>
     <div class="card-footer text-muted">
+      <div class="d-flex justify-content-end mx-2">
       comment (<%= record_coffee.comments.count %>)
       <%= link_to 'レビューを見る', record_coffee_path(record_coffee.id) %>
+      </div>
     </div>
 </div>
