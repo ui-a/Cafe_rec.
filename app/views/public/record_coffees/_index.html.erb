@@ -4,7 +4,7 @@
       <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
     </div>
       <%= record_coffee.item_name %>
-      <%= link_to record_coffee.user.name, record_coffees_path(record_coffee) %>
+      <%#= link_to record_coffee.user.name, index_user_record_coffee_path(record_coffee.user_id) %>
       <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
   </div>
   <div class="row">

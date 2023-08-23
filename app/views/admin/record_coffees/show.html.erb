@@ -1,7 +1,7 @@
 <div class="container w-75">
   <div class="margin-y">
     <div class="d-flex align-items-center justify-content-between">
-      <h4>Coffee投稿一覧</h4>
+      <h4>Coffee Review</h4>
     </div>
 
 <table class='table'>
@@ -25,9 +25,10 @@
     <td>タグ</td>
     <td>
       <% @record_coffee_tags.each do |tag| %>
-        <i class="fa-sharp fa-solid fa-tag"></i>
-        <%= link_to tag.name, recordtag_search_path(tag_id: tag.id) %>
-      <% end %></td>
+      <i class="fa-sharp fa-solid fa-tag"></i>
+      <%= link_to tag.name, search_coffeetags_path(tag_id: tag.id) %>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <td>評価</td>

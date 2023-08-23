@@ -35,11 +35,10 @@ end
         get :search
       end
     end
-    
+
     get 'users/mypage' => 'users#index'
-    get 'users/record' => 'users#show'
     get 'users/setting/edit' => 'users#edit'
-    patch 'users/setting' => 'users#withdraw'
+    patch 'users/setting' => 'users#update'
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdraw' => 'users#withdraw'
 

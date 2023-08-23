@@ -3,7 +3,11 @@
 <%= link_to 'Favorite', favorites_coffee_path %>
 <%= link_to 'Favorite', favorites_tea_path %>
 
+<%= link_to 'Coffee Review一覧', users_record_path %>
 
+<div class="color-test">
+  aaaaa
+</div>
 <% unless @user.guest_user? %>
 <%= link_to "退会する", users_confirm_path, class: "btn btn-danger" %>
 <% end %>

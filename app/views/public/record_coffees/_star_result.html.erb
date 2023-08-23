@@ -1,5 +1,7 @@
-総合評価
-<div id="total_star_<%= record_coffee.id %>"></div>
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">総合評価</div>
+  <div id="total_star_<%= record_coffee.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#total_star_<%= record_coffee.id %>');
@@ -17,8 +19,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-香り
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">香り</div>
 <div id="scent_star_<%= record_coffee.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#scent_star_<%= record_coffee.id %>');
@@ -36,8 +40,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-苦味
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">苦味</div>
 <div id="bitter_star_<%= record_coffee.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#bitter_star_<%= record_coffee.id %>');
@@ -55,8 +61,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-酸味
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">酸味</div>
 <div id="acidity_star_<%= record_coffee.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#acidity_star_<%= record_coffee.id %>');
@@ -74,8 +82,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-甘み
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">甘み</div>
 <div id="sweet_star_<%= record_coffee.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#sweet_star_<%= record_coffee.id %>');
@@ -93,8 +103,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-コク
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">コク</div>
 <div id="rich_star_<%= record_coffee.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#rich_star_<%= record_coffee.id %>');
