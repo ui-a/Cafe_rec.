@@ -18,7 +18,7 @@
         <% @record_coffees.each do |record_coffee| %>
         <tr>
           <td><%= link_to record_coffee.created_at.strftime('%Y/%m/%d'), admin_record_coffee_path(record_coffee.id) %></td>
-          <td><%= link_to record_coffee.user.name, admin_record_coffees_path(record_coffee.user.id) %></td>
+          <td><%= link_to record_coffee.user.name, admin_record_coffees_path(record_coffee.user) %></td>
           <td><%= record_coffee.item_name %></td>
           <td><%= record_coffee.brand_name %></td>
           <td>

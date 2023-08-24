@@ -48,5 +48,8 @@
       <% end %>
       </td>
   </tr>
-
 </table>
+    <div class="d-flex justify-content-around">
+      <%= link_to "編集する", edit_admin_record_coffee_path(@user), class: "btn btn-success" %>
+      <%= link_to "レビュー一覧を見る", admin_path, class: "btn btn-primary" %>
+    </div>

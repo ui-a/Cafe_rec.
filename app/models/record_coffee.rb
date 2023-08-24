@@ -14,6 +14,10 @@ class RecordCoffee < ApplicationRecord
   validates :price, presence:true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :review, presence:true, length: { minimum: 10, maximum: 500}
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :total_star_count, -> {order(total_star: :desc)}
+  scope :released, -> {where(release: true)}
+  scope :unreleased, -> {where(release: false)}
 
   def get_image(width, height)
     unless image.attached?
@@ -27,6 +31,7 @@ class RecordCoffee < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  #tag作成・更新
   def save_tags(tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - tags

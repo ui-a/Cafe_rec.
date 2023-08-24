@@ -1,18 +1,27 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  #before_action :set_user, only: [:favorites]
 
   def index
     @user = User.find(current_user.id)
   end
 
   def show
+    @user = User.find(params[:id])
+    @record_coffees = @user.record_coffees.order(created_at: :desc)
+    @record_tea_leaves = @user.record_tea_leaves.order(created_at: :desc)
   end
 
   def edit
+    @user = User.find(current_user.id)
   end
 
   def update
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to users_mypage_path, notice: "ユーザー情報を変更しました"
+    else
+      render "edit"
+    end
   end
 
   def withdraw
@@ -31,5 +40,6 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :profile_image)
   end
+
 
 end

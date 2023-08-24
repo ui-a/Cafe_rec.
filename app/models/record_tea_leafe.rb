@@ -14,6 +14,9 @@ class RecordTeaLeafe < ApplicationRecord
   validates :price, presence:true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :review, presence:true, length: { minimum: 10, maximum: 500}
 
+  scope :star_count, -> {order(star: :desc)}
+  scope :released, -> {where(release: true)}
+  scope :unreleased, -> {where(release: false)}
 
   def get_image(width, height)
     unless image.attached?

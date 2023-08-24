@@ -1,8 +1,15 @@
 class Public::RecordCoffeesController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:update, :edit]
 
   def index
-    @record_coffees = RecordCoffee.all.order(created_at: :desc)
+    if params[:latest]
+      @record_coffees = RecordCoffee.latest
+    elsif params[:total_star_count]
+      @record_coffees = RecordCoffee.star_count
+    else
+      @record_coffees = RecordCoffee.released.order(created_at: :desc)
+    end
   end
 
   def show
@@ -80,5 +87,12 @@ class Public::RecordCoffeesController < ApplicationController
     )
   end
 
+  def ensure_correct_user
+    record_coffee = RecordCoffee.find(params[:id])
+    user = User.find(record_coffee.user[:id])
+    unless user.id == current_user.id
+      redirect_to record_coffees_path
+    end
+  end
 
 end

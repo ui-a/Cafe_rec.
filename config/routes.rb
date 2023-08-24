@@ -37,11 +37,11 @@ end
     end
 
     get 'users/mypage' => 'users#index'
+    get 'users/:id' => 'users#show', as: 'users/record'
     get 'users/setting/edit' => 'users#edit'
     patch 'users/setting' => 'users#update'
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdraw' => 'users#withdraw'
-
     get 'favorites_coffee' => 'favorites#coffee_list'
     get 'favorites_tea' => 'favorites#tea_list'
     get 'search_coffeetags' => 'record_coffees#search'

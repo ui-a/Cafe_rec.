@@ -1,6 +1,7 @@
  <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+        <div class="container-fluid">
+          <!--<div class="col-xs-12 cover-img" style="background-image:url(<%#= asset_path 'top2.jpg' %>);">-->
           <a class="navbar-brand p-3" href="/">Cafe rec.<%# image_tag('logo.png') %></a>
               <% if user_signed_in? %>
                 <p class="m-0"><%= current_user.name %>さん</p>
@@ -21,8 +22,10 @@
               <li class="nav-item">
                 <%= link_to "review ▼", "#", class: 'nav-link text-dark' %>
                   <ul>
-                    <li>
+                    <li class="nav-item">
                       <%= link_to "review_Coffee", record_coffees_path, class: 'nav-link text-dark' %>
+                    </li>
+                    <li class="nav-item">
                       <%= link_to "review_Tea", record_tea_leaves_path, class: 'nav-link text-dark' %>
                     </li>
                   </ul>
@@ -36,9 +39,6 @@
             <% elsif admin_signed_in? %>
               <li class="nav-item px-3">
                 <%= link_to "投稿一覧", admin_record_coffees_path, class: 'nav-link'  %>
-              </li>
-              <li class="nav-item px-3">
-                <%= link_to "タグ一覧", admin_tags_path, class: 'nav-link'  %>
               </li>
               <li class="nav-item px-3">
                 <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link'  %>

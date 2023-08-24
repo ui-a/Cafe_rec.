@@ -13,6 +13,19 @@ class Admin::RecordTeaLeavesController < ApplicationController
   end
 
   def edit
+    @record_tea_leafe = RecordTeaLeafe.find(params[:id])
+    @tag_list = @record_tea_leafe.tags.pluck(:name).join(',')
+  end
+  
+  def update
+    @record_tea_leafe = RecordTeaLeafe.find(params[:id])
+    tag_list = params[:record_tea_leafe][:tag].split(',')
+    if @record_tea_leafe.update(record_tea_leafe_params)
+      @record_tea_leafe.save_tags(tag_list)
+      redirect_to record_tea_leafe_path(@record_tea_leafe), notice: "変更を保存しました"
+    else
+      render :edit
+    end
   end
 
 

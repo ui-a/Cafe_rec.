@@ -70,6 +70,9 @@ gem 'jquery-rails'
 # ransack install
 gem 'ransack'
 
+# 日本語化
+gem 'rails-i18n'
+
 # MySQLを利用するために必要なgem
 gem 'dotenv-rails'
 group :production do

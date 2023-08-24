@@ -1,3 +1,11 @@
+<div class='container px-3 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
+    </div>
+
+    <div class='col-md-9 py-5'>
+      <h4>検索結果"<%= @range %>"</h4>
 <% if @range == "Coffee" %>
   <% if @coffee_searches.present? %>
     <% @coffee_searches.each do |record_coffee| %>
@@ -15,3 +23,6 @@
     検索条件に当てはまるレビューはありません。
   <% end %>
 <% end %>
+</div>
+  </div>
+</div>

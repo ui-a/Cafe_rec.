@@ -1,2 +1,15 @@
-<h1>Admin::RecordTeaLeaves#edit</h1>
-<p>Find me in app/views/admin/record_tea_leaves/edit.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <%= render 'layouts/errors', obj: @record_tea_leafe %>
+  <div class='row'>
+    <div class='col-md-9'>
+      <h5>投稿フォーム</h5>
+      <%= form_with model: @record_tea_leafe, url: admin_record_tea_leafe_path do |f| %>
+          <%= render 'public/record_tea_leaves/tea_form', f: f %>
+        <div class="form-group">
+      <%= f.submit "変更を保存"%>
+  </div>
+<% end %>
+
+    </div>
+  </div>
+</div>

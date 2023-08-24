@@ -1,19 +1,24 @@
 <% record_coffee.comments.each do |comment| %>
-<div class="row justify-content-start">
-  <div class="col-4">
-      <%= comment.user.name %>
+<div class="row justify-content-start mt-2">
+  <div class="col-2">
+    <%= image_tag comment.user.get_profile_image(35,35) %>
   </div>
-  <div class="col-6">
+  <div class="col-8">
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><br>
     <%= comment.comment %>
     <% if comment.user == current_user %>
       <%= link_to "削除", record_coffee_comment_path(comment.record_drinkable, comment), method: :delete, remote: true %>
     <% end %>
   </div>
-  <% end %>
-  <div class="col-6">
+  </div>
+<% end %>
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="col-12 my-3 mx-auto">
+        <h6>コメントする</h6>
           <%= render 'layouts/errors', obj: comment %>
           <%= form_with model: [record_coffee, comment], local: false do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", required: true %>
+            <%= f.text_area :comment, rows: '5', style: "width:70%", placeholder: "コメントをここに", required: true %><br>
             <%= f.submit "送信する" %>
           <% end %>
   </div>

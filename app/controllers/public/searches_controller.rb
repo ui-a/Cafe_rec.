@@ -3,7 +3,7 @@ class Public::SearchesController < ApplicationController
   def search
     @range = params[:range]
     if @range == "Coffee"
-      if params[:item_name] && params[:brand_name] && 
+      if params[:item_name] && params[:brand_name] &&
         @coffee_searches = RecordCoffee.where('item_name LIKE ? AND brand_name LIKE ?', "%#{params[:item_name]}%", "%#{params[:brand_name]}%")
         elsif params[:brand_name]
         @coffee_searches = RecordCoffee.where('brand_name LIKE ?', "%#{params[:brand_name]}%")

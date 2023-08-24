@@ -14,6 +14,19 @@ class Admin::RecordCoffeesController < ApplicationController
   end
 
   def edit
+    @record_coffee = RecordCoffee.find(params[:id])
+    @tag_list = @record_coffee.tags.pluck(:name).join(',')
+  end
+  
+  def update
+    @record_coffee = RecordCoffee.find(params[:id])
+    tag_list = params[:record_coffee][:tag].split(',')
+    if @record_coffee.update(record_coffee_params)
+      @record_coffee.save_tags(tag_list)
+      redirect_to admin_record_coffee_path(@record_coffee), notice: "変更を保存しました"
+    else
+      render :edit
+    end
   end
   
   

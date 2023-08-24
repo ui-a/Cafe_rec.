@@ -1,8 +1,9 @@
 class Public::RecordTeaLeavesController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:update, :edit]
 
   def index
-    @record_tea_leaves = RecordTeaLeafe.all.order(created_at: :desc)
+    @record_tea_leaves = RecordTeaLeafe.released.order(created_at: :desc)
   end
 
   def show
@@ -80,4 +81,13 @@ class Public::RecordTeaLeavesController < ApplicationController
       :image
     )
   end
+
+  def ensure_correct_user
+    record_tea_leafe = RecordTeaLeafe.find(params[:id])
+    user = User.find(record_tea_leafe.user[:id])
+    unless user.id == current_user.id
+      redirect_to record_tea_leaves_path
+    end
+  end
+
 end

@@ -1,22 +1,11 @@
-
-  <div>
-    <%= image_tag 'top2.jpg', class:'ab-slick, img-fluid' %>
-  </div>
-<div class="container">
-  <div class="row">
-    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-      <div class="main-visual">
-      <div class="main-visual-content">
-        <!-- pタグ（と文字）を追加 -->
-        <p class="main-visual-text">
-          The world is a book and those who do not travel read only one page.
-        </p>
-        <p class="main-visual-name">
-          St. Augustine
-        </p>      </div>
-    </div>
-      <h3>Welcome to Cafe rec.</h3>
-      <p>お気に入りの一杯を、おすすめしていきませんか？</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 cover-img mx-auto" style="background-image:url(<%= asset_path 'top2.jpg' %>);">
+			<div class="cover-text text-center">
+			  <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+			  <h3 style="color: #fff;">Welcome to Cafe rec.</h3>
+				<p style="color: #fff;">
+        お気に入りの一杯を、おすすめしていきませんか？</p>
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row">
           <%= link_to 'Log in', new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
@@ -27,17 +16,7 @@
         <div class="row">
           <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
         </div>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
-
-<script>
-$(document).on('turbolinks:load', function(){
-  $('.slicker').slick({
-  autoplay:true, // 自動再生
-  autoplaySpeed: 3000 // 再生速度（ミリ秒）
-  dots:true,
-  });
-});
-</script>
