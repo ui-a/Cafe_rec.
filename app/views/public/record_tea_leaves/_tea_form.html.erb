@@ -4,8 +4,8 @@
     <%= f.text_field :item_name, placeholder: 'オリジナルブレンドティー', class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :brand_name, 'ブランド名' %>
-    <%= f.text_field :brand_name, placeholder: 'RecordTea', class: 'form-control' %>
+    <%= f.label :shop_name, '店名' %>
+    <%= f.text_field :shop_name, placeholder: 'RecordTea', class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :price, '価格(税込/100gあたり)' %>
@@ -49,7 +49,7 @@
   </div>
     <% else %>
       <div class="form-group">
-        <%= render 'star_result', record_tea_leafe: @record_tea_leafe %>
+        <%= render 'public/record_tea_leaves/star_result', record_tea_leafe: @record_tea_leafe %>
       </div>
     <% end %>
 

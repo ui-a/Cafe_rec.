@@ -3,7 +3,7 @@ class CreateRecordTeaLeaves < ActiveRecord::Migration[6.1]
     create_table :record_tea_leaves do |t|
       t.integer :user_id, null: false
       t.string :item_name, null: false
-      t.string :brand_name, null: false
+      t.string :shop_name, null: false
       t.integer :price, null: false
       t.text :review, null: false
       t.boolean :release, default: true, null: false

@@ -15,7 +15,7 @@
   </tr>
   <tr>
     <td>ブランド名</td>
-    <td><%= @record_coffee.brand_name %></td>
+    <td><%= @record_coffee.shop_name %></td>
   </tr>
     <tr>
     <td>価格</td>
@@ -50,6 +50,6 @@
   </tr>
 </table>
     <div class="d-flex justify-content-around">
+      <%= link_to "一覧に戻る", admin_record_coffees_path, class: "btn btn-primary" %>
       <%= link_to "編集する", edit_admin_record_coffee_path(@user), class: "btn btn-success" %>
-      <%= link_to "レビュー一覧を見る", admin_path, class: "btn btn-primary" %>
     </div>

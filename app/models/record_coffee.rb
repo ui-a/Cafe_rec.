@@ -10,7 +10,7 @@ class RecordCoffee < ApplicationRecord
   has_many :tags, through: :taggings
 
   validates :item_name, presence:true
-  validates :brand_name, presence:true
+  validates :shop_name, presence:true
   validates :price, presence:true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :review, presence:true, length: { minimum: 10, maximum: 500}
 
@@ -38,7 +38,7 @@ class RecordCoffee < ApplicationRecord
     new_tags = tags - current_tags
 
     old_tags.each do |old_name|
-      self.tags.delote Tag.find_by(name:old_name)
+      self.tags.delete Tag.find_by(name:old_name)
     end
 
     new_tags.each do |new_name|

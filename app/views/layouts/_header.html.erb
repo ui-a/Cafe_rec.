@@ -1,10 +1,11 @@
- <header class="shadow-sm">
+ <header>
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <!--<div class="col-xs-12 cover-img" style="background-image:url(<%#= asset_path 'top2.jpg' %>);">-->
           <a class="navbar-brand p-3" href="/">Cafe rec.<%# image_tag('logo.png') %></a>
               <% if user_signed_in? %>
-                <p class="m-0"><%= current_user.name %>さん</p>
+                <p class="m-0 text-light"><%= current_user.name %>さん</p>
+                <% else %>
+                <h6 class="m-0 text-light">管理者画面</h6>
               <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,50 +15,57 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "top", '/', class: 'nav-link text-dark' %>
+                <%= link_to "Top", '/', class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
-                <%= link_to "about", about_path, class: 'nav-link text-dark' %>
+                <%= link_to "About", about_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Review
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/record_coffees">Coffee Review</a></li>
+                <li><a class="dropdown-item" href="/record_tea_leaves">Tea Review</a></li>
+              </ul>
               </li>
               <li class="nav-item">
-                <%= link_to "review ▼", "#", class: 'nav-link text-dark' %>
-                  <ul>
-                    <li class="nav-item">
-                      <%= link_to "review_Coffee", record_coffees_path, class: 'nav-link text-dark' %>
-                    </li>
-                    <li class="nav-item">
-                      <%= link_to "review_Tea", record_tea_leaves_path, class: 'nav-link text-dark' %>
-                    </li>
-                  </ul>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'マイページ', users_mypage_path, class: 'nav-link text-dark' %>
+                <%= link_to 'マイページ', users_mypage_path, class: 'nav-link text-light' %>
               </li>
             <% elsif admin_signed_in? %>
               <li class="nav-item px-3">
                 <%= link_to "投稿一覧", admin_record_coffees_path, class: 'nav-link'  %>
               </li>
-              <li class="nav-item px-3">
-                <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link'  %>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Review
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/admin/record_coffees">Coffee Review</a></li>
+                <li><a class="dropdown-item" href="/admin/record_tea_leaves">Tea Review</a></li>
+              </ul>
               </li>
               <li class="nav-item px-3">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link'  %>
+                <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item px-3">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
               </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to "top", '/', class: 'nav-link text-dark' %>
+                <%= link_to "top", '/', class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
-                <%= link_to "about", about_path, class: 'nav-link text-dark' %>
+                <%= link_to "about", about_path, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
-                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
               </li>
             <% end %>
             </ul>

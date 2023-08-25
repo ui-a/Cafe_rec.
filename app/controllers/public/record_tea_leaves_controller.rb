@@ -3,7 +3,13 @@ class Public::RecordTeaLeavesController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit]
 
   def index
-    @record_tea_leaves = RecordTeaLeafe.released.order(created_at: :desc)
+    if params[:latest]
+      @record_tea_leaves = RecordTeaLeafe.latest
+    elsif params[:total_star_count]
+      @record_tea_leaves = RecordTeaLeafe.star_count
+    else
+      @record_tea_leaves = RecordTeaLeafe.released.order(created_at: :desc)
+    end
   end
 
   def show
@@ -67,7 +73,7 @@ class Public::RecordTeaLeavesController < ApplicationController
   def record_tea_leafe_params
     params.require(:record_tea_leafe).permit(
       :item_name,
-      :brand_name,
+      :shop_name,
       :price,
       :review,
       :total_star,

@@ -72,7 +72,7 @@ class Public::RecordCoffeesController < ApplicationController
   def record_coffee_params
     params.require(:record_coffee).permit(
       :item_name,
-      :brand_name,
+      :shop_name,
       :price,
       :review,
       :total_star,

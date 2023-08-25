@@ -4,7 +4,7 @@
       <%= render 'public/favorites/tea_favorite', record_tea_leafe: record_tea_leafe %>
     </div>
       <%= record_tea_leafe.item_name %>
-      <%= record_tea_leafe.user.name %>
+      <%= link_to record_tea_leafe.user.name, users_record_path(record_tea_leafe.user) %>
       <%= record_tea_leafe.created_at.strftime('%Y/%m/%d') %>
   </div>
   <div class="row">
@@ -18,7 +18,7 @@
         <p class="card-text"><%= record_tea_leafe.item_name %></p>
           <ul class="list-group list-group-flush border-0">
             <li class="list-group-item">
-              <%= record_tea_leafe.brand_name %>
+              <%= record_tea_leafe.shop_name %>
             </li>
             <li class="list-group-item">
               <%= record_tea_leafe.price.to_s(:delimited) %>円(税込)

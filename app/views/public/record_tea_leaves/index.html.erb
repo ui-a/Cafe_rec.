@@ -5,6 +5,18 @@
     </div>
 
     <div class='col-md-9 py-5'>
+        <h4>Tea Review</h4>
+      <div class="d-flex justify-content-end mx-2">
+        <%= link_to new_record_tea_leafe_path do %>
+          <i class="fa-solid fa-circle-plus fa-2x" style="color: #401910;"></i>
+        <% end %>
+        <%= link_to favorites_tea_path do %>
+          <i class="fa-solid fa-heart  fa-2x" style="color: #bf2626;"></i>
+        <% end %>
+      </div>
+
+<%= link_to '新しい順', record_tea_leaves_path(latest: "true") %>
+|<%= link_to '評価の高い順', record_tea_leaves_path(star_count: "true") %>
       <% @record_tea_leaves.each do |record_tea_leafe| %>
         <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
     <% end %>

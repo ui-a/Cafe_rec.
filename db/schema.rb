@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2023_08_09_133744) do
   create_table "record_coffees", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "item_name", null: false
-    t.string "brand_name", null: false
+    t.string "shop_name", null: false
     t.integer "price", null: false
     t.text "review", null: false
     t.boolean "release", default: true, null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2023_08_09_133744) do
   create_table "record_tea_leaves", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "item_name", null: false
-    t.string "brand_name", null: false
+    t.string "shop_name", null: false
     t.integer "price", null: false
     t.text "review", null: false
     t.boolean "release", default: true, null: false

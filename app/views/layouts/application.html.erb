@@ -11,7 +11,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
+  <body class="cover-img mx-auto" style="background-image:url(<%= asset_path 'top2.jpg' %>);">
+      <div class="d-flex flex-column vh-100">
     <%= render 'layouts/header' %>
 
     <main class="mb-auto">
