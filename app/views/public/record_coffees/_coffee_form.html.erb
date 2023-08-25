@@ -1,31 +1,52 @@
 <div class="form-group">
   <div class="d-flex flex-row mb-3">
+    <div class="col-2">
     <%= f.label :item_name, '商品名' %>
+    </div>
+    <div class="col-6">
     <%= f.text_field :item_name, placeholder: 'オリジナルブレンドコーヒー', class: 'form-control' %>
   </div>
 </div>
 <div class="form-group">
   <div class="d-flex flex-row mb-3">
+    <div class="col-2">
     <%= f.label :shop_name, '店名' %>
+    </div>
+    <div class="col-6">
     <%= f.text_field :shop_name, placeholder: 'RecordCoffee', class: 'form-control' %>
   </div>
 </div>
 <div class="form-group">
   <div class="d-flex flex-row mb-3">
+    <div class="col-2">
     <%= f.label :price, '価格(税込/100gあたり)' %>
+    </div>
+    <div class="col-6">
     <%= f.number_field :price, placeholder: '1000', class: 'form-control' %>
   </div>
 </div>
   <% if @record_coffee.id.nil? %>
   <div class="form-group">
-      <%= f.label :total_star, '総合評価' %>
-    <div id="post_raty"></div>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-2">
+        <%= f.label :total_star, '総合評価' %>
+      </div>
+      <div class="col-6">
+        <div id="post_raty"></div>
+      </div>
+    </div>
   </div>
     <%= render 'star_form', record_coffee: @record_coffee %>
 
   <div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-2">
       <%= f.label :scent_star, '香り' %>
+            </div>
+      <div class="col-6">
     <div id="post_raty1"></div>
+      </div>
+    </div>
   </div>
     <%= render 'star_form', record_coffee: @record_coffee %>
 

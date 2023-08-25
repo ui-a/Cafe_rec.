@@ -2,7 +2,7 @@ class Admin::RecordCoffeesController < ApplicationController
   
   
   def index
-    @record_coffees = RecordCoffee.all
+    @record_coffees = RecordCoffee.all.page(params[:page]).per(10)
   end
 
   def show

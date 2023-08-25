@@ -1,16 +1,17 @@
 <div class="container w-75">
+  <div class="background-board p-3">
   <div class="margin-y">
     <div class="d-flex align-items-center justify-content-between">
-      <h4>Coffee投稿一覧</h4>
+      <h4>Coffee Review投稿一覧</h4>
     </div>
     <%= link_to "Coffee", admin_record_coffees_path %> | <%= link_to "Tea", admin_record_tea_leaves_path %>
-    <table class='table table-hover table-light margin-y'>
+    <table class='table table-hover table-light-0 margin-y'>
       <thead>
         <tr>
           <th class="bg-brown">投稿日時</th>
           <th class="bg-brown">投稿者</th>
           <th class="bg-brown">商品名</th>
-          <th class="bg-brown">ブランド名</th>
+          <th class="bg-brown">ショップ名</th>
           <th class="bg-brown">公開/非公開</th>
         </tr>
       </thead>
@@ -20,7 +21,7 @@
           <td><%= link_to record_coffee.created_at.strftime('%Y/%m/%d'), admin_record_coffee_path(record_coffee.id) %></td>
           <td><%= link_to record_coffee.user.name, admin_record_coffees_path(record_coffee.user) %></td>
           <td><%= record_coffee.item_name %></td>
-          <td><%= record_coffee.brand_name %></td>
+          <td><%= record_coffee.shop_name %></td>
           <td>
             <% if record_coffee.release %>
               <span>公開</span>
@@ -32,5 +33,5 @@
       </tbody>
     </table>
   </div>
-  <%#= paginate @orders %>
+  <%= paginate @record_coffees %>
 </div>

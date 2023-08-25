@@ -1,40 +1,40 @@
 <div class="container" style="width: fit-content">
-  <div class="sub_container_position">
+  <div class="sub_container w-75 py-4 px-5 ">
 
-<h2>Log in</h2>
+    <h2 class="text-center">Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Log in", class:'btn btn-outline-secondary mt-1' %>
-  </div>
-<% end %>
+      <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+      <% end %>
 
-<%= render "public/shared/links" %>
+      <div class="actions">
+        <%= f.submit "Log in", class:'btn btn-outline-primary mt-1' %>
+      </div>
+    <% end %>
 
-<div class="row">
+<div class="row mt-5 mb-2">
     新規登録はこちら<br>
-          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-success btn-sm mx-2 sign_up" %>
         </div>
         <div class="row">
-    ゲストログインはこちら<br>
-          <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+    登録せずにお試しでご利用される方はこちら<br>
+          <%= link_to "Guest Login", users_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm mx-2 sign_in", method: :post %>
         </div>
 
   </div>

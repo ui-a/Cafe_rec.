@@ -1,7 +1,7 @@
 class Admin::RecordTeaLeavesController < ApplicationController
 
   def index
-    @record_tea_leaves = RecordTeaLeafe.all
+    @record_tea_leaves = RecordTeaLeafe.all.page(params[:page]).per(10)
   end
 
   def show

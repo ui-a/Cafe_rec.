@@ -18,15 +18,25 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  
+
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to records_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to record_coffees_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
+  private
+
+  def after_sign_in_path_for(resource)
+    record_coffees_path
+  end
+
+  def after_sign_up_path_for(resource)
+    record_coffees_path
   end
 
   protected
-  
+
   def reject_invalid_user
     user = User.find_by(email: params[:user][:email])
     if user

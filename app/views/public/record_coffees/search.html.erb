@@ -1,4 +1,13 @@
-<h2>タグが<%= @tag.name %>の投稿一覧</h2>
+<div class='container px-3 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
+    </div>
+
+
+    <div class='col-md-8 py-5'>
+      <div class='background-record ms-2 p-2'>
+        <h4 class="h4-search">タグが<%= @tag.name %>のレビュー</h4>
 
     <div class='col-md-9 py-5'>
       <% @record_coffees.each do |record_coffee| %>

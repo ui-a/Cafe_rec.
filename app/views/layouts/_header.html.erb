@@ -4,7 +4,8 @@
           <a class="navbar-brand p-3" href="/">Cafe rec.<%# image_tag('logo.png') %></a>
               <% if user_signed_in? %>
                 <p class="m-0 text-light"><%= current_user.name %>さん</p>
-                <% else %>
+              <% end %>
+              <% if admin_signed_in? %>
                 <h6 class="m-0 text-light">管理者画面</h6>
               <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -49,10 +50,12 @@
               </ul>
               </li>
               <li class="nav-item px-3">
-                <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-light' %>
+                <%= link_to "User List", admin_users_path, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item px-3">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+                <i class="fa-solid fa-right-from-bracket" style="color: #f8f9fa;"></i>
+                <% end %>
               </li>
             <% else %>
               <li class="nav-item">

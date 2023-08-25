@@ -1,11 +1,15 @@
-<div class='container px-5 px-sm-0'>
-  <%= render 'layouts/errors', obj: @record_tea_leafe %>
+<div class='container px-3 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
       <%= render 'public/records/sidebar', record: @record %>
     </div>
-    <div class='col-md-9'>
-      <h5>投稿フォーム</h5>
+
+
+    <div class='col-md-8 py-5'>
+      <div class='background-record ms-2 p-2'>
+  <%= render 'layouts/errors', obj: @record_tea_leafe %>
+
+    <div class='col-md-9'>レビューを編集する</h4>
         <%= form_with model: @record_tea_leafe do |f| %>
           <%= render 'tea_form', f: f %>
         <div class="form-group">

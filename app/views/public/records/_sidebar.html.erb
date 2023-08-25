@@ -1,5 +1,5 @@
 <!-- 折り畳み展開ポインタ -->
-<div class="card my-5 px-2 py-2" style="width: 12rem;">
+<div class="card my-5 px-3 py-3" style="width: 13rem;">
   <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
     <a style="cursor:pointer;">▼ Search</a>
  </div>
@@ -7,14 +7,23 @@
 <!-- 折り畳まれ部分 -->
   <div id="open" style="display:none;clear:both;">
   <!--ここの部分が折りたたまれる＆展開される部分になります。自由に記述してください。-->
-          <div class="search_form d-flex justify-content-end">
+  <div class="search_form d-flex justify-content-end">
 
     <%= form_with url:search_searches_path, method: :get do |f| %>
-    <%= f.select :range, options_for_select([['Coffee'], ['Tea']]) %>
-    <%= f.text_field :item_name, placeholder: '商品名' %>
-    <%= f.text_field :brand_name, placeholder: 'ブランド名' %>
-
-    <%= submit_tag '検索', class: "button" %>
+    <div class="form-group mt-2">
+      <div class="form-title">Category
+        <%= f.select :range, options_for_select([['Coffee'], ['Tea']])%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :item_name, placeholder: '商品名' %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :shop_name, placeholder: 'ショップ名' %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag '検索', class: "btn btn-outline-secondary" %>
+    </div>
    <% end %>
         </div>
 
