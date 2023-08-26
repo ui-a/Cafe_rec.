@@ -1,28 +1,27 @@
-<div class="card mb-3 " style="max-width: 700px;">
+<div class="card mb-5" style="max-width: 700px;">
   <div class="card-header">
-    <div id="favorite_coffee_btn_<%= record_coffee.id %>" >
-      <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
-    </div>
-      <%= record_coffee.item_name %>
-      <%= link_to record_coffee.user.name, users_record_path(record_coffee.user) %>
-      <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
+    <div class="d-flex justify-content-between">
+      <h5>Coffee Review</h5>
+        <div id="favorite_coffee_btn_<%= record_coffee.id %>" >
+          <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        投稿者:<%= link_to record_coffee.user.name, users_record_path(record_coffee.user) %>さん|
+        <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
+      </div>
+
   </div>
+  <div class="card-main">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-5 mt-4 ml-4">
       <p><%= image_tag record_coffee.get_image(250,167) %></p>
         <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
     </div>
-    <div class="col-lg-8">
       <div class="card-body">
-        <h5 class="card-title">Coffee</h5>
-        <p class="card-text"><%= record_coffee.item_name %></p>
-          <ul class="list-group list-group-flush border-0">
-            <li class="list-group-item">
-              <%= record_coffee.shop_name %>
-            </li>
-            <li class="list-group-item">
-              <%= record_coffee.price.to_s(:delimited) %>円(税込)
-            </li>
+        <h5 class="card-title">商品名<%= record_coffee.item_name %></h5>
+          <p class="card-text">購入店<%= record_coffee.shop_name %></p>
+            <p class="card-text">価格(税込/100gあたり) / <%= record_coffee.price.to_s(:delimited) %>円(税込)</p>
             <li class="list-group-item">
          　　   <i class="fa-sharp fa-solid fa-tag"></i>
               <%= record_coffee.tags.map(&:name).join(', ') %>
@@ -33,11 +32,11 @@
           </ul>
       </div>
     </div>
-    </div>
-    <div class="card-footer text-muted">
+     </div>
+    <div class="card-footer text-light">
       <div class="d-flex justify-content-end mx-2">
-      comment (<%= record_coffee.comments.count %>)
-      <%= link_to 'レビューを見る', record_coffee_path(record_coffee.id) %>
+      comment (<%= record_coffee.comments.count %>) |
+      <%= link_to ' レビューを見る', record_coffee_path(record_coffee.id), class: "text-light" %>
       </div>
     </div>
 </div>

@@ -4,14 +4,14 @@
       <%= render 'public/records/sidebar', record: @record %>
     </div>
 
-    <div class='col-md-8 py-5'>
-      <div class='background-record ms-2 p-2'>
+    <div class='col-md-9 py-5'>
+    <div class='background-record ms-2 py-3 px-5'>
       <h4 class='h4-favorite'>Coffee いいね一覧</h4>
       <% if @coffee_favorite_list.present? %>
         <% @coffee_favorite_list.each do |record_coffee| %>
           <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
         <% end %>
-        <% else %>
+      <% else %>
           <p>いいねしたコーヒーのレビューはありません</p>
       <% end %>
     </div>

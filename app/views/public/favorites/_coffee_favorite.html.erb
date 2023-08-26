@@ -1,5 +1,5 @@
         <% if record_coffee.favorited_by?(current_user) %>
-          <%= link_to record_coffee_favorites_path(record_coffee), method: :delete, remote: true do %>
+          <%= link_to record_coffee_favorites_path(record_coffee), class: "text-danger", method: :delete, remote: true do %>
         ♥<%= record_coffee.favorites.count %>
           <% end %>
         <% else %>

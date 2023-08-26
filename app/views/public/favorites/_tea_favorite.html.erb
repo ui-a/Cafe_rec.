@@ -1,5 +1,5 @@
         <% if record_tea_leafe.favorited_by?(current_user) %>
-          <%= link_to record_tea_leafe_favorites_path(record_tea_leafe), method: :delete, remote: true do %>
+          <%= link_to record_tea_leafe_favorites_path(record_tea_leafe), class: "text-danger", method: :delete, remote: true do %>
         ♥<%= record_tea_leafe.favorites.count %>
           <% end %>
         <% else %>

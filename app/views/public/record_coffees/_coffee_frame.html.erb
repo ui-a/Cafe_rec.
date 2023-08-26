@@ -15,11 +15,11 @@
     <% end %>
   </div>
   <div class="row p-2">
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <p><%= image_tag record_coffee.get_image(200,150) %></p>
         <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-7">
       <div class="card-body">
         <h5 class="card-title"><%= record_coffee.item_name %></h5><%= record_coffee.shop_name %>
             <ul class="list-group list-group-flush border-0">

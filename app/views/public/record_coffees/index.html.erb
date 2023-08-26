@@ -4,8 +4,8 @@
       <%= render 'public/records/sidebar', record: @record %>
     </div>
 
-    <div class='col-md-8 py-5'>
-    <div class='background-record ms-2 p-2'>
+    <div class='col-md-9 py-5'>
+    <div class='background-record ml-2 py-3 px-5'>
         <h4 class="h4-review">Coffee Review</h4>
       <div class="d-flex justify-content-end mx-2">
         <%= link_to new_record_coffee_path do %>
@@ -18,9 +18,11 @@
 
 <%= link_to '新しい順', record_coffees_path(latest: "true") %>
 |<%= link_to '評価の高い順', record_coffees_path(star_count: "true") %>
+<div class="mx-auto">
       <% @record_coffees.each do |record_coffee| %>
         <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
       <% end %>
     </div>
+  </div>
   </div>
 </div>

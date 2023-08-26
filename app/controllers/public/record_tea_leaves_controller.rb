@@ -4,11 +4,11 @@ class Public::RecordTeaLeavesController < ApplicationController
 
   def index
     if params[:latest]
-      @record_tea_leaves = RecordTeaLeafe.latest
+      @record_tea_leaves = RecordTeaLeafe.latest.page(params[:page]).per(5)
     elsif params[:total_star_count]
-      @record_tea_leaves = RecordTeaLeafe.star_count
+      @record_tea_leaves = RecordTeaLeafe.star_count.page(params[:page]).per(5)
     else
-      @record_tea_leaves = RecordTeaLeafe.released.order(created_at: :desc)
+      @record_tea_leaves = RecordTeaLeafe.released.order(created_at: :desc).page(params[:page]).per(5)
     end
   end
 
