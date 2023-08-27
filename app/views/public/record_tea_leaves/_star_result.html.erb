@@ -1,5 +1,7 @@
-総合評価
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">総合評価</div>
 <div id="total_star_<%= record_tea_leafe.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#total_star_<%= record_tea_leafe.id %>');
@@ -17,8 +19,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-香り
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">香り</div>
 <div id="scent_star_<%= record_tea_leafe.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#scent_star_<%= record_tea_leafe.id %>');
@@ -36,8 +40,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-苦味
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">甘み</div>
 <div id="sweet_star_<%= record_tea_leafe.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#sweet_star_<%= record_tea_leafe.id %>');
@@ -55,8 +61,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-酸味
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">渋み</div>
 <div id="astringency_star_<%= record_tea_leafe.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#astringency_star_<%= record_tea_leafe.id %>');
@@ -74,8 +82,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-甘み
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">清涼感</div>
 <div id="fresh_star_<%= record_tea_leafe.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#fresh_star_<%= record_tea_leafe.id %>');
@@ -93,8 +103,10 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
-コク
+<div class="d-flex flex-row mb-3">
+  <div class="mx-1">飲みやすさ</div>
 <div id="easy_star_<%= record_tea_leafe.id %>"></div>
+</div>
 <script>
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#easy_star_<%= record_tea_leafe.id %>');

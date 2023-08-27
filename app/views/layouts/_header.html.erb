@@ -25,20 +25,28 @@
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Review
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/record_coffees">Coffee Review</a></li>
-                <li><a class="dropdown-item" href="/record_tea_leaves">Tea Review</a></li>
-              </ul>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/record_coffees">Coffee Review</a></li>
+                  <li><a class="dropdown-item" href="/record_tea_leaves">Tea Review</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-light" href="/users/mypage" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Mypage
+              </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/record_coffees/new">Coffee New Review</a></li>
+                  <li><a class="dropdown-item" href="/record_tea_leaves/new">Tea New Review</a></li>
+                  <li><a class="dropdown-item" href="/favorites_coffee">Favorite Coffee</a></li>
+                  <li><a class="dropdown-item" href="/favorites_tea">Favorite Tea</a></li>
+                </ul>
               </li>
               <li class="nav-item">
                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
               </li>
-              <li class="nav-item">
-                <%= link_to 'Mypage', users_mypage_path, class: 'nav-link text-light' %>
-              </li>
             <% elsif admin_signed_in? %>
               <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Review
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

@@ -11,9 +11,9 @@
       <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
     </div>
   </div>
-  <div class="card-main">
+  <div class="card-main px-3">
     <div class="row">
-      <div class="col-lg-5 mt-4 ml-4">
+      <div class="col-lg-5 mt-4">
         <p><%= image_tag record_coffee.get_image(250,167) %></p>
           <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
       </div>

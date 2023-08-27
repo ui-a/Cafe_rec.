@@ -1,58 +1,54 @@
-<div class="card m-4" style="max-width: 700px;">
+<div class="card my-4" style="max-width: 700px;">
   <div class="card-header">
-    <%= record_coffee.item_name %>
-    レビューユーザー：<%= record_coffee.user.name %>
-    <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
-    <div id="favorite_coffee_btn_<%= record_coffee.id %>" >
-      <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
+    <div class="d-flex justify-content-between">
+      <h5>Coffee Review</h5>
+        <div id="favorite_coffee_btn_<%= record_coffee.id %>" >
+          <%= render 'public/favorites/coffee_favorite', record_coffee: record_coffee %>
+        </div>
     </div>
-    <% if record_coffee.user == current_user %>
-      <% if record_coffee.release %>
-        <span >公開</span>
-      <% else %>
-        <span>非公開</span>
+    <div class="d-flex justify-content-end">
+      投稿者:<%= link_to record_coffee.user.name, users_record_path(record_coffee.user) %>さん|
+      <%= record_coffee.created_at.strftime('%Y/%m/%d') %>|
+      <% if record_coffee.user == current_user %>
+        <% if record_coffee.release %>
+          <span >公開</span>
+        <% else %>
+          <span class="text-black-50">非公開</span>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <div class="row p-2">
-    <div class="col-lg-5">
-      <p><%= image_tag record_coffee.get_image(200,150) %></p>
-        <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
     </div>
-    <div class="col-lg-7">
+  </div>
+  <div class="card-main px-3">
+    <div class="row">
+      <div class="col-lg-5 mt-4">
+        <p><%= image_tag record_coffee.get_image(250,167) %></p>
+          <%= render 'public/record_coffees/star_result', record_coffee: record_coffee %>
+      </div>
       <div class="card-body">
-        <h5 class="card-title"><%= record_coffee.item_name %></h5><%= record_coffee.shop_name %>
-            <ul class="list-group list-group-flush border-0">
-              <li class="list-group-item">
-                <%= record_coffee.price.to_s(:delimited) %>円(税込)
-              </li>
-              <li class="list-group-item">
-                <% @record_coffee_tags.each do |tag| %>
-                <i class="fa-sharp fa-solid fa-tag"></i>
-                <%= link_to tag.name, search_coffeetags_path(tag_id: tag.id) %>
-                <% end %>
-          　　  </li>
-              <li class="list-group-item">
-                <div class="border border-secondary w-100 p-3">
-                <%= record_coffee.review %>
-                </div>
-                <% if record_coffee.user == current_user %>
-                  <%= link_to 'Edit', edit_record_coffee_path(record_coffee), class: "btn btn-sm btn-success" %>
-                  <%= link_to 'Destroy', record_coffee, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-                <% end %>
-              </li>
-            </ul>
-          </div>
+        <h5 class="card-title"><span class="item">商品名</span>　<%= record_coffee.item_name %></h5>
+        <p class="card-text"><span class="shop-price">購入店</span>　<%= record_coffee.shop_name %></p>
+        <p class="card-text"><span class="shop-price">価格</span>　<%= record_coffee.price.to_s(:delimited) %>円(税込/100gあたり)</p>
+        <div class="border-top border-bottom py-1 mb-3" style="color: #000;">
+       　  <% @record_coffee_tags.each do |tag| %>
+            <i class="fa-sharp fa-solid fa-tag"></i>
+            <%= link_to tag.name, search_coffeetags_path(tag_id: tag.id) %>
+          <% end %>
+        </div>
+        <div class="border rounded p-2" style="height: 200px">
+          <p class="shop-price">レビュー</p>
+          <p class="card-text"><%= record_coffee.review %></p>
+        </div>
+        <div class="d-flex justify-content-around mt-3">
+          <% if record_coffee.user == current_user %>
+            <%= link_to 'Edit', edit_record_coffee_path(record_coffee), class: "btn btn-sm btn-outline-success" %>
+            <%= link_to 'Destroy', record_coffee, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger"%>
+          <% end %>
         </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <div id="coffee_comment">
-          <%= render 'public/comments/coffee_comment', record_coffee: record_coffee, comment: comment %>
-          </div>
-        </li>
-      </ul>
-      </div>
+    </div>
+    <div class="border-top py-1 mb-3" style="color: #000;"></div>
+    <div id="coffee_comment">
+      <%= render 'public/comments/coffee_comment', record_coffee: record_coffee, comment: comment %>
     </div>
   </div>
 </div>

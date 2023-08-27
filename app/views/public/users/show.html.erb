@@ -5,11 +5,20 @@
     </div>
 
     <div class='col-md-9 py-5'>
-        <h4>Coffee Review</h4>
+      <div class='background-record ml-2 py-3 px-5'>
+        <div id="anchor-mypage"><h4 class="h4-review"><%= @user.name %>さんのレビュー一覧</h4></div>
+        <h5 class="h4-review">Coffee Review</h5>
         <% @record_coffees.each do |record_coffee| %>
           <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
         <% end %>
-        <h4>Tea Review</h4>
+        <h5 class="h4-review">Tea Review</h5>
         <% @record_tea_leaves.each do |record_tea_leafe| %>
           <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
         <% end %>
+        <div class="d-flex justify-content-end">
+          <a href="#anchor-mypage">トップへ戻る▲</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

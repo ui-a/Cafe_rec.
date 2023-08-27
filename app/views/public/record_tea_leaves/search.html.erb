@@ -5,12 +5,20 @@
     </div>
 
     <div class='col-md-9 py-5'>
-    <div class='background-record ms-2 py-3 px-5'>
-
-<h2>タグが<%= @tag.name %>の投稿一覧</h2>
+      <div class='background-record ml-2 py-3 px-5'>
+        <div id="anchor-tea-search"><h4 class='h4-search'>タグが"<%= @tag.name %>"のレビュー</h4></div>
+        <div class="mx-auto mt-5">
 
     <div class='col-md-9 py-5'>
       <% @record_tea_leaves.each do |record_tea_leafe| %>
         <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
       <% end %>
+        </div>
+        <%#= paginate @record_searches %>
+        <div class="d-flex justify-content-end">
+          <a href="#anchor-tea-search">トップへ戻る▲</a>
+        </div>
+      </div>
     </div>
+  </div>
+</div>

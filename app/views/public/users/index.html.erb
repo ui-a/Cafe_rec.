@@ -4,32 +4,104 @@
       <%= render 'public/records/sidebar', record: @record %>
     </div>
 
-
-    <div class='col-md-8 py-5'>
-      <div class='background-record ms-2 p-2'>
-
-
-<%= link_to 'New Record(Coffee)', new_record_coffee_path %>
-
-
-<span class="mypage-border">
-<%= link_to new_record_tea_leafe_path do %>
-<i class="fa-brands fa-envira fa-rotate-90 fa-lg" style="color: #3c6417;"></i>New Record(Tea)
-<% end %>
-</span>
-
-<%= link_to 'Favorite', favorites_coffee_path %>
-<%= link_to 'Favorite', favorites_tea_path %>
-
-<%= link_to 'Coffee Review一覧', users_record_path(@user) %>
-
-<% unless @user.guest_user? %>
-    <%= link_to users_setting_edit_path(@user), class: "btn btn-outline-secondary" do %>
-      <i class="fas fa-user-cog"></i>
-    <% end %>
-<% end %>
-
-
-<% unless @user.guest_user? %>
-<%= link_to "退会する", users_confirm_path, class: "btn btn-danger" %>
-<% end %>
+    <div class='col-md-9 py-5'>
+      <div class='background-record ml-2 py-3 px-5'>
+        <h4 class="h4-review mb-4">My page</h4>
+        <div class="d-flex align-items-center flex-column bd-highlight mb-3">
+          <div class="p-2 bd-highlight">
+            <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
+          </div>
+          <div class="p-2 bd-highlight"><%= @user.name %></div>
+        </div>
+        <div class="col-10 mx-auto my-4">
+          <table class="table mb-4 table-light">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Coffee</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <h5 class="mypage-border">
+                    <%= link_to new_record_coffee_path do %>
+                    <i class="fa-solid fa-mug-saucer fa-lg" style="color: #511f1f;"></i> New Review
+                    <% end %>
+                  </h5>
+                </td>
+                <td class="text-muted">コーヒー用レビュー投稿フォーム</td>
+              </tr>
+              <tr>
+                <td>
+                  <h5 class="mypage-border">
+                    <%= link_to favorites_coffee_path do %>
+                    <i class="fa-solid fa-heart  fa-lg" style="color: #bf2626;"></i> Favorite
+                    <% end %>
+                  </h5>
+                </td>
+                <td class="text-muted">"いいね"したレビュー</td>
+              </tr>
+            </tbody>
+            <thead class="thead-light mt-3">
+              <tr>
+                <th scope="col">Tea</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <h5 class="mypage-border">
+                    <%= link_to new_record_tea_leafe_path do %>
+                    <i class="fa-brands fa-envira fa-rotate-90 fa-lg" style="color: #3c6417;"></i> New Record
+                    <% end %>
+                  </h5>
+                </td>
+                <td class="text-muted">紅茶やお茶など用レビュー投稿フォーム</td>
+              </tr>
+              <tr>
+                <td>
+                  <h5 class="mypage-border">
+                    <%= link_to favorites_tea_path do %>
+                    <i class="fa-solid fa-heart  fa-lg" style="color: #bf2626;"></i> Favorite
+                    <% end %>
+                  </h5>
+                </td>
+                <td class="text-muted">"いいね"したレビュー</td>
+              </tr>
+            </tbody>
+            <thead class="thead-light mt-4">
+              <tr>
+                <th scope="col">Coffee & Tea</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <h5 class="mypage-border">
+                    <%= link_to users_record_path(@user) do %>
+                    <i class="fa-solid fa-compact-disc fa-lg" style="color: #353536;"></i> Review一覧
+                    <% end %>
+                  </h5>
+                </td>
+                <td class="text-muted"><%= @user.name %>さんのレビュー一覧</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-around mx-2 my-3">
+          <% unless @user.guest_user? %>
+            <%= link_to users_setting_edit_path(@user), class: "btn btn-outline-secondary" do %>
+              <i class="fas fa-user-cog"></i> ユーザー情報を編集
+            <% end %>
+          <% end %>
+          <% unless @user.guest_user? %>
+            <%= link_to "退会する", users_confirm_path, class: "btn btn-outline-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,9 +4,9 @@ class Public::RecordCoffeesController < ApplicationController
 
   def index
     if params[:latest]
-      @record_coffees = RecordCoffee.latest.page(params[:page]).per(5)
+      @record_coffees = RecordCoffee.latest.released.page(params[:page]).per(5)
     elsif params[:total_star_count]
-      @record_coffees = RecordCoffee.total_star_count.page(params[:page]).per(5)
+      @record_coffees = RecordCoffee.total_star_count.released.page(params[:page]).per(5)
     else
       @record_coffees = RecordCoffee.released.order(created_at: :desc).page(params[:page]).per(5)
     end
@@ -64,7 +64,7 @@ class Public::RecordCoffeesController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @taggings = Tagging.where(tag_id: params[:tag_id])
     @coffee_taggings = @taggings.where(record_drinkable_type: "RecordCoffee")
-    @record_coffees = @tag.record_coffees
+    @record_coffees = @tag.record_coffees.released.page(params[:page]).per(5)
   end
 
   private

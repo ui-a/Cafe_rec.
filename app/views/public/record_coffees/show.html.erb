@@ -8,6 +8,9 @@
       <div class='background-record ms-2 py-3 px-5'>
         <h4 class="h4-review">Coffee Review</h4>
         <%= render 'public/record_coffees/coffee_frame', record_coffee: @record_coffee, comment: @comment %>
+        <%= link_to record_coffees_path do %>
+          <i class="fas fa-angle-double-left"></i>Coffee一覧に戻る
+        <% end %>
       </div>
     </div>
   </div>

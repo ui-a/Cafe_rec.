@@ -1,24 +1,49 @@
-<div class='container'>
+<div class='container px-3 px-sm-0'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>User info</h2>
-    <%= form_with model: @user, url: users_setting_path, method: :patch, local:true do |f| %>
-      <%= render 'layouts/errors', obj: @user %>
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control name" %>
-      </div>
-     <div class="form-group">
-        <%= f.label :image %>
-        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.text_area :email, class: "form-control introduction" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit class: 'btn btn-secondary' %>
-      </div>
-    <% end %>
+    <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
+    </div>
+
+    <div class='col-md-9 py-5'>
+      <div class='background-record ml-2 py-3 px-5'>
+        <h4 class="h4-create mb-4">ユーザー情報を編集する</h4>
+          <%= render 'layouts/errors', obj: @user %>
+          <%= form_with model: @user, url: users_setting_path, method: :patch, local:true do |f| %>
+          <div class="form-group">
+            <div class="d-flex flex-row mb-3">
+              <div class="col-2">
+                <%= f.label :name %>
+              </div>
+              <div class="col-6">
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="d-flex flex-row mb-3">
+              <div class="col-2">
+                <%= f.label :image %>
+              </div>
+              <div class="col-6">
+                <%= f.file_field :profile_image, class: "form-control-file", accept: 'image/*' %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="d-flex flex-row mb-3">
+              <div class="col-2">
+                <%= f.label :email %>
+              </div>
+              <div class="col-6">
+                <%= f.text_field :email, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.submit class: 'btn btn-secondary' %>
+          </div>
+          </div>
+          <% end %>
+    </div>
   </div>
 </div>

@@ -8,6 +8,9 @@
     <div class='background-record ms-2 py-3 px-5'>
       <h4 class="h4-review">Tea Review</h4>
       <%= render 'public/record_tea_leaves/tea_frame', record_tea_leafe: @record_tea_leafe, comment: @comment %>
+      <%= link_to record_tea_leaves_path do %>
+        <i class="fas fa-angle-double-left"></i>Tea一覧に戻る
+      <% end %>
     </div>
   </div>
 </div>

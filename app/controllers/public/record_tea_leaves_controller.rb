@@ -4,9 +4,9 @@ class Public::RecordTeaLeavesController < ApplicationController
 
   def index
     if params[:latest]
-      @record_tea_leaves = RecordTeaLeafe.latest.page(params[:page]).per(5)
+      @record_tea_leaves = RecordTeaLeafe.latest.released.page(params[:page]).per(5)
     elsif params[:total_star_count]
-      @record_tea_leaves = RecordTeaLeafe.total_star_count.page(params[:page]).per(5)
+      @record_tea_leaves = RecordTeaLeafe.total_star_count.released.page(params[:page]).per(5)
     else
       @record_tea_leaves = RecordTeaLeafe.released.order(created_at: :desc).page(params[:page]).per(5)
     end
@@ -64,7 +64,7 @@ class Public::RecordTeaLeavesController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @taggings = Tagging.where(tag_id: params[:tag_id])
     @tea_taggings = @taggings.where(record_drinkable_type: "RecordTeaLeafe")
-    @record_tea_leaves = @tag.record_tea_leaves
+    @record_tea_leaves = @tag.record_tea_leaves.released.page(params[:page]).per(5)
   end
 
 
