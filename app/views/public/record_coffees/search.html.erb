@@ -4,12 +4,19 @@
       <%= render 'public/records/sidebar', record: @record %>
     </div>
 
-   <div class='col-md-9 py-5'>
-    <div class='background-record ms-2 py-3 px-5'>
-        <h4 class="h4-search">タグが<%= @tag.name %>のレビュー</h4>
-
     <div class='col-md-9 py-5'>
-      <% @record_coffees.each do |record_coffee| %>
-        <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
-      <% end %>
+      <div class='background-record ml-2 py-3 px-5'>
+        <div id="anchor-coffee-search"><h4 class='h4-search'>タグが"<%= @tag.name %>"のレビュー</h4></div>
+        <div class="mx-auto mt-5">
+          <% @record_coffees.each do |record_coffee| %>
+            <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
+          <% end %>
+        </div>
+        <%#= paginate @record_searches %>
+        <div class="d-flex justify-content-end">
+          <a href="#anchor-coffee-search">トップへ戻る▲</a>
+        </div>
+      </div>
     </div>
+  </div>
+</div>

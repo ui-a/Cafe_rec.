@@ -37,18 +37,16 @@
   text-align: center;
 }
 
-/* -------------------- */
-/* ▼メニューバーの装飾 */
-/* -------------------- */
+
+//メニューバーの装飾
 ul.navbar-nav {
    margin: 0px;               /* メニューバー外側の余白(ゼロ) */
    padding: 0px 0px 0px 0px; /* メニューバー内側の余白(左に15px) */
    background-color: #262626B3; /* バーの背景色(濃い赤色) */
 }
 
-/* -------------------------- */
-/* ▼メインメニュー項目の装飾 */
-/* -------------------------- */
+
+//メインメニュー項目の装飾
 .nav-item {
    //width: 125px;
    background-color: #262626B3; /* メニュー項目の背景色(濃い赤色) */
@@ -123,6 +121,35 @@ ul.navbar-nav ul li:hover {
   background-color: #F2F2F2B3;
 }
 
+.pagination {
+  margin: 20px auto 0;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  span{
+    text-align: center;
+    width: 50px;
+    :hover{
+      background-color: #A69981;
+      color: #F2F2F2;
+    }
+    a{
+      color: #262626;
+      display: block;
+      width: 100%;
+      height: 100%;
+      :hover{
+        background-color: #A69981;
+        color: #F2F2F2;
+      }
+    }
+  }
+}
+.current {
+  background-color: #A69981;
+  color: #F2F2F2;
+}
+
 .card {
    background-color: #F2F2F2B3;
 }
@@ -156,7 +183,7 @@ ul.navbar-nav ul li:hover {
   margin: 0 2px;
 }
 
-.border-bottom {
+.mypage-border {
   margin-inline: auto;
   width: -moz-fit-content;
   width: fit-content;
@@ -175,11 +202,27 @@ ul.navbar-nav ul li:hover {
   background-color: #A69981;
 }
 
-.card-title {
+.item {
   display: inline-block;
   padding: 10px;
   background-color: #F2EFC4;
   border-radius: 30px 3px;
+}
+
+.shop-price {
+  display: inline-block;
+  padding: 5px;
+  background-color: #F2EFC4;
+  border-radius: 20px 3px;
+}
+
+.review {
+  background-color: #D9D5C5;
+}
+
+.tag {
+  border: 1px 0px;
+  border-color: #A69981;
 }
 
 // admin

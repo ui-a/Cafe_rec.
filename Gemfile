@@ -58,9 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # devise install
 gem 'devise'
 
-# dotenv install
-# gem 'dotenv-rails'
-
 # kaminari install
 gem 'kaminari','~> 1.2.1'
 

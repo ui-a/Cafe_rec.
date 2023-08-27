@@ -12,7 +12,7 @@
 <%= link_to 'New Record(Coffee)', new_record_coffee_path %>
 
 
-<span class="border-bottom">
+<span class="mypage-border">
 <%= link_to new_record_tea_leafe_path do %>
 <i class="fa-brands fa-envira fa-rotate-90 fa-lg" style="color: #3c6417;"></i>New Record(Tea)
 <% end %>
@@ -23,13 +23,13 @@
 
 <%= link_to 'Coffee Review一覧', users_record_path(@user) %>
 
+<% unless @user.guest_user? %>
     <%= link_to users_setting_edit_path(@user), class: "btn btn-outline-secondary" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
+<% end %>
 
-<div class="color-test">
-  aaaaa
-</div>
+
 <% unless @user.guest_user? %>
 <%= link_to "退会する", users_confirm_path, class: "btn btn-danger" %>
 <% end %>

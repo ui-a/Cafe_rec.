@@ -6,7 +6,7 @@ class Public::RecordTeaLeavesController < ApplicationController
     if params[:latest]
       @record_tea_leaves = RecordTeaLeafe.latest.page(params[:page]).per(5)
     elsif params[:total_star_count]
-      @record_tea_leaves = RecordTeaLeafe.star_count.page(params[:page]).per(5)
+      @record_tea_leaves = RecordTeaLeafe.total_star_count.page(params[:page]).per(5)
     else
       @record_tea_leaves = RecordTeaLeafe.released.order(created_at: :desc).page(params[:page]).per(5)
     end

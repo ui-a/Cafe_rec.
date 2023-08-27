@@ -6,7 +6,7 @@ class Public::RecordCoffeesController < ApplicationController
     if params[:latest]
       @record_coffees = RecordCoffee.latest.page(params[:page]).per(5)
     elsif params[:total_star_count]
-      @record_coffees = RecordCoffee.star_count.page(params[:page]).per(5)
+      @record_coffees = RecordCoffee.total_star_count.page(params[:page]).per(5)
     else
       @record_coffees = RecordCoffee.released.order(created_at: :desc).page(params[:page]).per(5)
     end
