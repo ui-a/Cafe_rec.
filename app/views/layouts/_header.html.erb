@@ -15,13 +15,13 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-              <li class="nav-item">
+              <li class="nav-item px-2">
                 <%= link_to "Top", '/', class: 'nav-link text-light' %>
               </li>
-              <li class="nav-item">
+              <li class="nav-item px-2">
                 <%= link_to "About", about_path, class: 'nav-link text-light' %>
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown px-2">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Review
               </a>
@@ -30,7 +30,7 @@
                   <li><a class="dropdown-item" href="/record_tea_leaves">Tea Review</a></li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown px-2">
               <a class="nav-link dropdown-toggle text-light" href="/users/mypage" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Mypage
               </a>
@@ -41,11 +41,11 @@
                   <li><a class="dropdown-item" href="/favorites_tea">Favorite Tea</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
+              <li class="nav-item px-2">
                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
               </li>
             <% elsif admin_signed_in? %>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown px-2">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Review
               </a>
@@ -54,25 +54,23 @@
                 <li><a class="dropdown-item" href="/admin/record_tea_leaves">Tea Review</a></li>
               </ul>
               </li>
-              <li class="nav-item px-3">
+              <li class="nav-item px-2">
                 <%= link_to "User List", admin_users_path, class: 'nav-link text-light' %>
               </li>
-              <li class="nav-item px-3">
-                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-right-from-bracket" style="color: #f8f9fa;"></i>
-                <% end %>
+              <li class="nav-item px-2">
+                <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link text-light'%>
               </li>
             <% else %>
-              <li class="nav-item">
+              <li class="nav-item px-2">
                 <%= link_to "Top", '/', class: 'nav-link text-light' %>
               </li>
-              <li class="nav-item">
+              <li class="nav-item px-2">
                 <%= link_to "About", about_path, class: 'nav-link text-light' %>
               </li>
-              <li class="nav-item">
+              <li class="nav-item px-2">
                 <%= link_to "Sign in", new_user_registration_path, class: 'nav-link text-light' %>
               </li>
-              <li class="nav-item">
+              <li class="nav-item px-2">
                 <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
               </li>
             <% end %>

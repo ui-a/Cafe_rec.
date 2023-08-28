@@ -1,5 +1,5 @@
 class Admin::RecordCoffeesController < ApplicationController
-  
+  before_action :authenticate_admin!
   
   def index
     @record_coffees = RecordCoffee.all.page(params[:page]).per(10)
@@ -27,6 +27,14 @@ class Admin::RecordCoffeesController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def search
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @taggings = Tagging.where(tag_id: params[:tag_id])
+    @coffee_taggings = @taggings.where(record_drinkable_type: "RecordCoffee")
+    @record_coffees = @tag.record_coffees.page(params[:page]).per(10)
   end
   
   

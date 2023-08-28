@@ -1,8 +1,9 @@
 <div class="container" style="width: fit-content">
   <div class="sub_container w-100 py-4 px-5">
-    <h2 class="text-center">管理者ログイン</h2>
+    <h3 class="text-center">管理者ログイン</h3>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

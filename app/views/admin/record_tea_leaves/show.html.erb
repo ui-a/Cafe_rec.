@@ -1,56 +1,61 @@
 <div class="container w-75">
-  <div class="margin-y">
+  <div class="background-board py-3 px-5 my-4">
     <div class="d-flex align-items-center justify-content-between">
-      <h4>Tea Review</h4>
+      <h4 class="h4-review mb-5">Tea Review</h4>
     </div>
+    <table class='table table-light-0 margin-y'>
+        <tr>
+          <td>レビューID</td>
+          <td><%= @record_tea_leafe.id %></td>
+        </tr>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= @record_tea_leafe.user.name %></td>
+        </tr>
+        <tr>
+          <td>商品名</td>
+          <td><%= @record_tea_leafe.item_name %></td>
+        </tr>
+        <tr>
+          <td>店名</td>
+          <td><%= @record_tea_leafe.shop_name %></td>
+        </tr>
+          <tr>
+          <td>価格</td>
+          <td><%= @record_tea_leafe.price.to_s(:delimited) %>円(税込/100gあたり)</td>
+        </tr>
+        <tr>
+          <td>タグ</td>
+          <td>
+            <% @record_tea_leafe_tags.each do |tag| %>
+              <i class="fa-sharp fa-solid fa-tag"></i>
+              <%= link_to tag.name, admin_search_teatags_path(tag_id: tag.id) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>評価</td>
+          <td><%= render 'public/record_tea_leaves/star_result', record_tea_leafe: @record_tea_leafe %></td>
+        </tr>
+        <tr>
+          <td>レビュー</td>
+          <td><%= @record_tea_leafe.review %></td>
+        </tr>
+        <tr>
+          <td>公開/非公開</td>
+          <td>
+          <% if @record_tea_leafe.release %>
+            <span>公開</span>
+          <% else %>
+            <span>非公開</span>
+          <% end %>
+          </td>
+        </tr>
+    </table>
 
-<table class='table'>
-  <tr>
-    <td>name</td>
-    <td><%= @record_tea_leafe.user.name %></td>
-  </tr>
-  <tr>
-    <td>商品名</td>
-    <td><%= @record_tea_leafe.item_name %></td>
-  </tr>
-  <tr>
-    <td>ブランド名</td>
-    <td><%= @record_tea_leafe.shop_name %></td>
-  </tr>
-    <tr>
-    <td>価格</td>
-    <td><%= @record_tea_leafe.price.to_s(:delimited) %>円(税込)</td>
-  </tr>
-  <tr>
-    <td>タグ</td>
-    <td>
-      <% @record_tea_leafe_tags.each do |tag| %>
-      <i class="fa-sharp fa-solid fa-tag"></i>
-      <%= link_to tag.name, search_teatags_path(tag_id: tag.id) %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td>評価</td>
-    <td><%= render 'public/record_tea_leaves/star_result', record_tea_leafe: @record_tea_leafe %></td>
-  </tr>
-  <tr>
-    <td>レビュー</td>
-    <td><%= @record_tea_leafe.review %></td>
-  </tr>
-  <tr>
-    <td>レビュー</td>
-    <td>
-      <% if @record_tea_leafe.release %>
-        <span>公開</span>
-      <% else %>
-        <span>非公開</span>
-      <% end %>
-      </td>
-  </tr>
-</table>
     <div class="d-flex justify-content-around">
       <%= link_to "一覧に戻る", admin_record_tea_leaves_path, class: "btn btn-primary" %>
       <%= link_to "編集する", edit_admin_record_tea_leafe_path(@user), class: "btn btn-success" %>
-
     </div>
+  </div>
+</div>

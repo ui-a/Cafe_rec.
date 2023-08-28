@@ -1,4 +1,5 @@
 class Admin::RecordTeaLeavesController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @record_tea_leaves = RecordTeaLeafe.all.page(params[:page]).per(10)
@@ -27,6 +28,15 @@ class Admin::RecordTeaLeavesController < ApplicationController
       render :edit
     end
   end
+  
+  def search
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @taggings = Tagging.where(tag_id: params[:tag_id])
+    @tea_taggings = @taggings.where(record_drinkable_type: "RecordTeaLeafe")
+    @record_tea_leaves = @tag.record_tea_leaves.page(params[:page]).per(10)
+  end
+
 
 
     private

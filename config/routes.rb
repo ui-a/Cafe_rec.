@@ -50,9 +50,8 @@ end
 
   namespace :admin do
     get '/' => 'homes#top'
-  end
-
-  namespace :admin do
+    get 'search_coffeetags' => 'record_coffees#search'
+    get 'search_teatags' => 'record_tea_leaves#search'
     resources :users, only: [:index, :show, :edit, :update]
     resources :record_coffees, only: [:index, :show, :edit, :update, :destroy]
     resources :record_tea_leaves, only: [:index, :show, :edit, :update, :destroy]

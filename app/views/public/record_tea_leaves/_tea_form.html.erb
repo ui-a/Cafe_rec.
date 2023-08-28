@@ -1,51 +1,101 @@
-
-  <div class="form-group">
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-3">
     <%= f.label :item_name, '商品名' %>
+    </div>
+    <div class="col-9">
     <%= f.text_field :item_name, placeholder: 'オリジナルブレンドティー', class: 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :shop_name, 'ショップ名' %>
+</div>
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-3">
+    <%= f.label :shop_name, '店名' %>
+    </div>
+    <div class="col-9">
     <%= f.text_field :shop_name, placeholder: 'RecordTea', class: 'form-control' %>
   </div>
-  <div class="form-group">
+</div>
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-5">
     <%= f.label :price, '価格(税込/100gあたり)' %>
+    </div>
+    <div class="col-7">
     <%= f.number_field :price, placeholder: '1000', class: 'form-control' %>
   </div>
+</div>
 
   <% if @record_tea_leafe.id.nil? %>
   <div class="form-group">
-      <%= f.label :total_star, '総合評価' %>
-    <div id="post_raty"></div>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-3">
+        <%= f.label :total_star, '総合評価' %>
+      </div>
+      <div class="col-9">
+        <div id="post_raty"></div>
+      </div>
+    </div>
   </div>
     <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
 
   <div class="form-group">
-      <%= f.label :scent_star, '香り' %>
-    <div id="post_raty1"></div>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-3">
+        <%= f.label :scent_star, '香り' %>
+      </div>
+      <div class="col-9">
+        <div id="post_raty1"></div>
+      </div>
+    </div>
   </div>
     <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
 
   <div class="form-group">
-      <%= f.label :sweet_star, '甘み' %>
-    <div id="post_raty2"></div>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-3">
+        <%= f.label :sweet_star, '甘み' %>
+      </div>
+      <div class="col-9">
+        <div id="post_raty2"></div>
+      </div>
+    </div>
   </div>
     <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
 
   <div class="form-group">
-      <%= f.label :astringency_star, '渋味' %>
-    <div id="post_raty3"></div>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-3">
+        <%= f.label :astringency_star, '渋み' %>
+      </div>
+      <div class="col-9">
+        <div id="post_raty3"></div>
+      </div>
+    </div>
   </div>
     <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
 
   <div class="form-group">
-      <%= f.label :fresh_star, '清涼感' %>
-    <div id="post_raty4"></div>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-3">
+        <%= f.label :fresh_star, '清涼感' %>
+      </div>
+      <div class="col-9">
+        <div id="post_raty4"></div>
+      </div>
+    </div>
   </div>
     <%= render 'star_form', record_tea_leafe: @record_tea_leafe %>
 
   <div class="form-group">
-      <%= f.label :easy_star, '飲みやすさ' %>
-    <div id="post_raty5"></div>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-3">
+        <%= f.label :easy_star, '飲みやすさ' %>
+      </div>
+      <div class="col-9">
+        <div id="post_raty5"></div>
+      </div>
+    </div>
   </div>
     <% else %>
       <div class="form-group">
@@ -54,17 +104,35 @@
     <% end %>
 
   <div class="form-group">
-        <%= f.label :tag, 'タグ(,で区切ると複数タグ登録できます)' %>
-        <%= f.text_field :tag, value: @tag_list, class: 'form-control' %>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-3">
+        <%= f.label :tag, 'タグ' %>
+      </div>
+      <div class="col-9">
+        <%= f.text_field :tag, value: @tag_list, placeholder: ',で区切ると複数タグ登録できます', class: 'form-control' %>
+      </div>
+    </div>
+  </div>
 
   <div class="form-group">
-    <%= f.label :image, '画像' %>
-    <%= f.file_field :image, accept: "image/*" %>
+    <div class="col-11">
+      <%= f.label :image, '画像' %>
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
   </div>
+
   <div class="form-group">
-    <%= f.label :review, 'レビュー内容' %>
-    <%= f.text_area :review %>
+    <div class="d-flex flex-row mb-3">
+      <div class="col-3">
+        <%= f.label :review, 'レビュー内容' %>
+      </div>
+      <div class="col-9">
+        <%= f.text_area :review, placeholder: '10文字以上記入してください', class: 'form-control'  %>
+      </div>
+    </div>
   </div>
+
+<div class="d-flex justify-content-around mt-3">
   <span class="margin-x">
     <%= f.radio_button :release, true %>
     <%= f.label :release_true, "公開" %>
@@ -73,3 +141,4 @@
     <%= f.radio_button :release, false %>
     <%= f.label :release_false, "非公開" %>
   </span>
+</div>
