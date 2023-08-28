@@ -12,33 +12,10 @@
               <%= form_with model: @record_tea_leafe do |f| %>
               <%= render 'tea_form', f: f %>
               <div class="form-group">
-              <%= f.submit "　投稿　", class: "btn btn-outline-info mx-auto my-3 d-block" %>
+              <%= f.submit "　変更を保存　", class: "btn btn-outline-info mx-auto my-3 d-block" %>
               </div>
               <% end %>
             </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class='container px-3 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'public/records/sidebar', record: @record %>
-    </div>
-
-    <div class='col-md-9 py-5'>
-      <div class='background-record ml-2 py-3 px-5'>
-        <h4 class="h4-create">レビューを編集する</h4>
-          <%= render 'layouts/errors', obj: @record_tea_leafe %>
-          <%= form_with model: @record_tea_leafe do |f| %>
-            <%= render 'tea_form', f: f %>
-          <div class="form-group">
-            <%= f.submit "変更を保存"%>
-          </div>
-          <% end %>
       </div>
     </div>
   </div>
