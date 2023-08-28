@@ -21,6 +21,7 @@ end
 
   scope module: :public do
     get 'about' => 'homes#about', as: 'about'
+    get 'privacy_policy' => 'homes#privacy_policy', as: 'privacy_policy'
     resources :records, only: [:index]
     resources :record_tea_leaves, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]

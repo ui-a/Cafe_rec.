@@ -28,6 +28,8 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
+<p class="small mt-2">ご登録の際は<%= link_to 'プライバシーポリシー', privacy_policy_path %>に同意されたこととします。</p>
+
       <div class="actions">
         <%= f.submit "Sign up", class: "btn btn-outline-success mt-1" %>
       </div>

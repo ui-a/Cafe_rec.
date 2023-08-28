@@ -26,18 +26,12 @@
     <footer class="text-white pt-3 pb-2"  style="background-color: #40290E;">
       <div class="container">
         <div class="row no-gutters">
-          <div class="col-md-4">
-            <p>Cafe rec.</p>
-          </div>
-          <div class="col-md-8">
-            <ul class="p-0 list-unstyled">
-              <li>
-                <a href="" title="About" class="text-white-50">会社概要</a>
-              </li>
-              <li>
-                <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
-              </li>
-            </ul>
+          <div class="col-12 px-5">
+            <div class="d-flex justify-content-center mb-2">
+              <%= link_to '当サイトについて', about_path, class:"text-white small mr-3" %>
+              <%= link_to 'プライバシーポリシー', privacy_policy_path, class:"text-white small" %>
+            </div>
+            <p class="small text-center"><i class="fa-sharp fa-regular fa-copyright"></i>CopyRight Cafe rec.</p>
           </div>
         </div>
       </div>
