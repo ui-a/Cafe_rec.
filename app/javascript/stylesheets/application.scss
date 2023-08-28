@@ -32,12 +32,6 @@
 	}
 }
 
-.cover-text {
-	display: table-cell;
-	vertical-align: middle;
-  text-align: center;
-}
-
 
 //メニューバーの装飾
 ul.navbar-nav {
@@ -111,6 +105,8 @@ ul.navbar-nav ul li:hover {
 
 .top-text {
   color: #ffffff;
+  text-shadow: 1px 1px 2px #808080;
+  margin: 150px 0px 0px 0px;
 }
 
 //user
