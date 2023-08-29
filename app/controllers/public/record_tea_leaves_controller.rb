@@ -56,7 +56,7 @@ class Public::RecordTeaLeavesController < ApplicationController
   def destroy
     record_tea_leafe = RecordTeaLeafe.find(params[:id])
     record_tea_leafe.destroy
-    redirect_to records_path
+    redirect_to record_tea_leaves_path
   end
 
   def search

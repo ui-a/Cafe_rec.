@@ -56,7 +56,7 @@ class Public::RecordCoffeesController < ApplicationController
   def destroy
     record_coffee = RecordCoffee.find(params[:id])
     record_coffee.destroy
-    redirect_to records_path
+    redirect_to record_coffees_path
   end
 
   def search
