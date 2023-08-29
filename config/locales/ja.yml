@@ -1,0 +1,21 @@
+ja:
+ activerecord:
+   models:
+     record_coffee:
+     record_tea_leaves:
+     user:
+   attributes:
+     record_coffee:
+       item_name: 商品名
+       shop_name: ショップ名
+       price: 価格
+       review: レビュー内容
+       total_star: 総合評価
+     record_tea_leaves:
+       item_name: 商品名
+       shop_name: ショップ名
+       price: 価格
+       review: レビュー内容
+       total_star: 総合評価
+     user:
+       name: ユーザー名

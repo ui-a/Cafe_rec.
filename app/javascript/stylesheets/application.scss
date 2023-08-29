@@ -2,7 +2,7 @@
 
 
 .cover-img {
-	height: 500px;
+	height: 400px;
 	display: table;
 	width: 100%;
 	background-size: cover;
@@ -106,7 +106,7 @@ ul.navbar-nav ul li:hover {
 .top-text {
   color: #ffffff;
   text-shadow: 1px 1px 2px #808080;
-  margin: 150px 0px 0px 0px;
+  margin: 30px 0px 0px 0px;
 }
 
 //user
@@ -190,6 +190,10 @@ ul.navbar-nav ul li:hover {
   margin: 0 2px;
 }
 
+.text-warp {
+  overflow-wrap: break-word;
+}
+
 .card-header {
   background-color: #D9CDB8;
 }
@@ -206,7 +210,7 @@ ul.navbar-nav ul li:hover {
   margin-inline: auto;
 }
 
-.item {
+.card-title {
   display: inline-block;
   padding: 10px;
   background-color: #F2EFC4;

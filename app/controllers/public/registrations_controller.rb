@@ -11,7 +11,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
       redirect_to root_path, alert: 'ゲストユーザーは更新・削除できません。'
     end
   end
-  
+
+  def after_sign_up_path_for(resource)
+    record_coffees_path
+  end
+
   # GET /resource/sign_up
   # def new
   #   super

@@ -1,4 +1,4 @@
-<div class="card my-4" style="max-width: 700px;">
+<div class="card my-4 mx-auto" style="max-width: 700px;">
   <div class="card-header">
     <div class="d-flex justify-content-between">
       <h5>Tea Review</h5>
@@ -25,9 +25,14 @@
           <%= render 'public/record_tea_leaves/star_result', record_tea_leafe: record_tea_leafe %>
       </div>
       <div class="card-body">
-        <h5 class="card-title"><span class="item">商品名</span>　<%= record_tea_leafe.item_name %></h5>
-        <p class="card-text"><span class="shop-price">ショップ名</span>　<%= record_tea_leafe.shop_name %></p>
-        <p class="card-text"><span class="shop-price">価格</span>　<%= record_tea_leafe.price.to_s(:delimited) %>円(税込/100gあたり)</p>
+          <h5 class="card-title mb-2">商品名</h5>
+        <div class="text-wrap" style="width: 20rem;">
+        　<h5><%= record_tea_leafe.item_name %></h5>
+        </div>
+        <div class="text-wrap mb-2" style="width: 20rem;">
+          <p class="card-text"><span class="shop-price">ショップ名</span>　<%= record_tea_leafe.shop_name %></p>
+        </div>
+    　　    <p class="card-text"><span class="shop-price">価格</span>　<%= record_tea_leafe.price.to_s(:delimited) %>円(税込/100gあたり)</p>
         <div class="border-top border-bottom py-1 mb-3" style="color: #000;">
           <% @record_tea_leafe_tags.each do |tag| %>
             <i class="fa-sharp fa-solid fa-tag"></i>
