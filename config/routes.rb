@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'searches/search'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {
@@ -53,6 +56,7 @@ end
     get '/' => 'homes#top'
     get 'search_coffeetags' => 'record_coffees#search'
     get 'search_teatags' => 'record_tea_leaves#search'
+    get 'search' => 'searches#search'
     resources :users, only: [:index, :show, :edit, :update]
     resources :record_coffees, only: [:index, :show, :edit, :update, :destroy]
     resources :record_tea_leaves, only: [:index, :show, :edit, :update, :destroy]

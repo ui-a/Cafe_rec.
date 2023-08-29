@@ -1,0 +1,19 @@
+<div class="container w-75">
+  <div class="background-board py-3 px-5 my-4">
+    <%= render 'admin/searches/search' %>
+  </div>
+  <div class="background-board py-3 px-5 my-4">
+    <div class="margin-y">
+      <div class="d-flex align-items-center justify-content-between">
+        <% if @range == "Coffee" %>
+        <h4 class="h4-search mb-4">Coffee Review search "<%= @word %>"</h4>
+      </div>
+          <%= render 'admin/record_coffees/index', record_coffee: @record_coffee %>
+        <% else %>
+        <h4 class="h4-search mb-4">Tea Review search "<%= @word %>"</h4>
+      </div>
+          <%= render 'admin/record_tea_leaves/index', record_tea_leafe: @record_tea_leafe %>
+        <% end %>
+    </div>
+  </div>
+</div>

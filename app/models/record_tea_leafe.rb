@@ -46,4 +46,14 @@ class RecordTeaLeafe < ApplicationRecord
     end
   end
 
+  def self.looks(search, word)
+    if search == "item_name"
+      @record_tea_leafe = RecordTeaLeafe.where("item_name LIKE?", "%#{word}%")
+    elsif search == "shop_name"
+      @record_tea_leafe = RecordTeaLeafe.where("shop_name LIKE?", "%#{word}%")
+    else
+      @record_tea_leafe = RecordTeaLeafe.all
+    end
+  end
+
 end

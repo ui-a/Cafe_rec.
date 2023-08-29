@@ -10,21 +10,21 @@
 	background-attachment: fixed;
 }
 
-/* ワイドスクリーン用のCSS */
+//ワイドスクリーン用のCSS
 @media only screen and (min-width: 1500px) {
 	.cover-img {
 		height: 800px;
 	}
 }
 
-/* タブレット用のCSS */
+//タブレット用のCSS
 @media only screen and (min-width : 768px) and (max-width : 1200px) {
 	.cover-img {
 		height: 500px;
 	}
 }
 
-/* スマホ用のCSS */
+//スマホ用のCSS
 @media only screen and (max-width: 479px) {
 	.cover-img {
 		height: 300px;
@@ -65,7 +65,7 @@ ul.navbar-nav ul {
 
 //サブメニューがある場合に開く処理
 ul.navbar-nav li:hover ul {
-   display: block;      /* ★5:マウスポインタが載っている項目の内部にあるリストを表示する */
+   display: block;      /* マウスポインタが載っている項目の内部にあるリストを表示する */
 }
 
 //サブメニュー項目の装飾
@@ -272,12 +272,4 @@ ul.navbar-nav ul li:hover {
 // admin
 .background-board {
    background-color: #ffffffE6;
-}
-
-
-.cell-link{
-	height: 100%;
-	padding: 2px 5px;
-	display: flex;
-	align-items: center;
 }

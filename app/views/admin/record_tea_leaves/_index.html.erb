@@ -1,0 +1,27 @@
+    <table class='table table-hover table-light-0 margin-y'>
+      <thead>
+        <tr>
+          <th>投稿日時</th>
+          <th>投稿者</th>
+          <th>商品名</th>
+          <th>ショップ名</th>
+          <th>公開/非公開</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @record_tea_leaves.each do |record_tea_leafe| %>
+        <tr>
+          <td><%= link_to record_tea_leafe.created_at.strftime('%Y/%m/%d'), admin_record_tea_leafe_path(record_tea_leafe.id) %></td>
+          <td><%= record_tea_leafe.user.name %></td>
+          <td><%= record_tea_leafe.item_name %></td>
+          <td><%= record_tea_leafe.shop_name %></td>
+          <td>
+            <% if record_tea_leafe.release %>
+              <span>公開</span>
+            <% else %>
+              <span>非公開</span>
+            <% end %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>

@@ -46,6 +46,16 @@ class RecordCoffee < ApplicationRecord
       self.tags << tag
     end
   end
+  
+  def self.looks(search, word)
+    if search == "item_name"
+      @record_coffee = RecordCoffee.where("item_name LIKE?", "%#{word}%")
+    elsif search == "shop_name"
+      @record_coffee = RecordCoffee.where("shop_name LIKE?", "%#{word}%")
+    else
+      @record_coffee = RecordCoffee.all
+    end
+  end
 
 
 end

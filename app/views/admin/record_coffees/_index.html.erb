@@ -1,0 +1,27 @@
+   <table class='table table-hover table-light-0 margin-y'>
+      <thead>
+        <tr>
+          <th>投稿日時</th>
+          <th>投稿者</th>
+          <th>商品名</th>
+          <th>ショップ名</th>
+          <th>公開/非公開</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @record_coffees.each do |record_coffee| %>
+        <tr>
+          <td><%= link_to record_coffee.created_at.strftime('%Y/%m/%d'), admin_record_coffee_path(record_coffee.id) %></td>
+          <td><%= record_coffee.user.name %></td>
+          <td><%= record_coffee.item_name %></td>
+          <td><%= record_coffee.shop_name %></td>
+          <td>
+            <% if record_coffee.release %>
+              <span>公開</span>
+            <% else %>
+              <span>非公開</span>
+            <% end %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
