@@ -3,13 +3,13 @@ class Public::FavoritesController < ApplicationController
 
   def coffee_list
     @user = current_user
-    coffee_favorites = Favorite.where(user_id: @user.id).pluck(:record_coffee_id)
+    coffee_favorites = Favorite.where(user_id: @user.id).pluck(:record_coffee_id).compact
     @coffee_favorite_list = RecordCoffee.find(coffee_favorites)
   end
 
   def tea_list
     @user = current_user
-    tea_favorites = Favorite.where(user_id: @user.id).pluck(:record_tea_leafe_id)
+    tea_favorites = Favorite.where(user_id: @user.id).pluck(:record_tea_leafe_id).compact
     @tea_favorite_list = RecordTeaLeafe.find(tea_favorites)
   end
 
