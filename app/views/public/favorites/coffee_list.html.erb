@@ -6,17 +6,16 @@
 
     <div class='col-md-9 py-5'>
       <div class='background-record ml-2 py-3 px-5'>
-        <div id="anchor-coffee-favorite"><h4 class='h4-favorite'>Coffee いいね一覧</h4></div>
+        <div id="anchor-coffee-favorite"><h4 class='h4-favorite'>Favorite Coffee List</h4></div>
         <div class="mx-auto mt-5">
           <% if @coffee_favorite_list.present? %>
             <% @coffee_favorite_list.each do |record_coffee| %>
               <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
             <% end %>
           <% else %>
-            <p>いいねしたコーヒーのレビューはありません</p>
+            <p>お気に入りしたコーヒーのレビューはありません</p>
           <% end %>
         </div>
-        <%#= paginate @coffee_favorite_list %>
         <div class="d-flex justify-content-end">
           <a href="#anchor-coffee-favorite">トップへ戻る▲</a>
         </div>

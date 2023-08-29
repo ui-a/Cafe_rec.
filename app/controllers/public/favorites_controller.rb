@@ -4,6 +4,7 @@ class Public::FavoritesController < ApplicationController
   def coffee_list
     @user = current_user
     coffee_favorites = Favorite.where(user_id: @user.id).pluck(:record_coffee_id).compact
+    #.compactでnil削除
     @coffee_favorite_list = RecordCoffee.find(coffee_favorites)
   end
 

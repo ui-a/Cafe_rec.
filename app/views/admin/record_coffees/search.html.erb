@@ -4,6 +4,6 @@
       <h4 class="h4-review mb-5">タグが"<%= @tag.name %>"のCoffee Review</h4>
     </div>
       <%= render 'admin/record_coffees/index', record_coffee: @record_coffee %>
+    <%= paginate @record_coffees %>
   </div>
-  <%= paginate @record_coffees %>
 </div>
