@@ -6,7 +6,7 @@
         <%= form_with model: @record_tea_leafe, url: admin_record_tea_leafe_path do |f| %>
           <%= render 'public/record_tea_leaves/tea_form', f: f %>
         <div class="form-group">
-          <%= f.submit "変更を保存"%>
+          <%= f.submit '変更を保存', class: "btn btn-success  mx-auto my-3 d-block" %>
         </div>
         <% end %>
       </div>
