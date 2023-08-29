@@ -10,7 +10,7 @@
           <td><%= @user.id %></td>
         </tr>
         <tr>
-          <td>氏名</td>
+          <td>ユーザー名</td>
           <td><%= @user.name %></td>
         </tr>
         <tr>
@@ -18,7 +18,7 @@
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <th>会員ステータス</th>
+          <th>ユーザーステータス</th>
           <td>
             <% if @user.is_deleted %>
               <strong class="text-danger">退会</strong>

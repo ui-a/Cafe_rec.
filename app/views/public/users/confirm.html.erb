@@ -1,17 +1,24 @@
-<div class="container" style="width: fit-content">
-
-  <div class="sub_container_position text-center">
-    <h4>本当に退会しますか？</h4>
-    <p class="margin-y">
-      退会すると、会員登録情報や<br>
-      これまでの購入履歴が閲覧できなくなります。<br>
-      退会する場合は、「退会する」をクリックしてください。
-    </p>
-    <div >
-      <%= link_to "退会しない", users_mypage_path, class: "btn btn-primary padding-x margin-x" %>
-      <%= link_to "退会する", users_withdraw_path, method: :PATCH, class: "btn btn-danger padding-x margin-x", "data-confirm"=>"本当に退会しますか？" %>
+<div class='container px-3 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'public/records/sidebar', record: @record %>
     </div>
 
+    <div class='col-md-9 py-5'>
+      <div class='background-record ml-2 py-3 px-5'>
+        <h4 class="h4-create mb-4">本当に退会しますか？</h4>
+          <div class="text-center">
+            <p class="margin-y">
+              退会すると、ユーザーの登録情報や<br>
+              これまでのレビュー履歴が閲覧できなくなります。<br>
+              退会する場合は、「退会する」をクリックしてください。
+            </p>
+          </div>
+          <div class="d-flex justify-content-around mx-2 my-3">
+            <%= link_to "退会しない", users_mypage_path, class: "btn btn-outline-primary padding-x margin-x" %>
+            <%= link_to "退会する", users_withdraw_path, method: :PATCH, class: "btn btn-outline-danger padding-x margin-x", "data-confirm"=>"本当に退会しますか？" %>
+          </div>
+      </div>
+    </div>
   </div>
-
 </div>

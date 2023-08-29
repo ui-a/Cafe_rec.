@@ -11,8 +11,8 @@
           <%= form_with model: @user, url: users_setting_path, method: :patch, local:true do |f| %>
           <div class="form-group">
             <div class="d-flex flex-row mb-3">
-              <div class="col-2">
-                <%= f.label :name %>
+              <div class="col-3">
+                <%= f.label :name, 'ユーザー名' %>
               </div>
               <div class="col-6">
                 <%= f.text_field :name, class: "form-control" %>
@@ -21,8 +21,8 @@
           </div>
           <div class="form-group">
             <div class="d-flex flex-row mb-3">
-              <div class="col-2">
-                <%= f.label :image %>
+              <div class="col-3">
+                <%= f.label :image, 'アイコン' %>
               </div>
               <div class="col-6">
                 <%= f.file_field :profile_image, class: "form-control-file", accept: 'image/*' %>
@@ -31,8 +31,8 @@
           </div>
           <div class="form-group">
             <div class="d-flex flex-row mb-3">
-              <div class="col-2">
-                <%= f.label :email %>
+              <div class="col-3">
+                <%= f.label :email, 'メールアドレス'%>
               </div>
               <div class="col-6">
                 <%= f.text_field :email, class: "form-control" %>
@@ -40,10 +40,10 @@
             </div>
           </div>
           <div class="form-group">
-            <%= f.submit class: 'btn btn-secondary' %>
-          </div>
+                <%= f.submit "　変更を保存　", class: "btn btn-outline-success mx-auto my-3 d-block" %>
           </div>
           <% end %>
+      </div>
     </div>
   </div>
 </div>
