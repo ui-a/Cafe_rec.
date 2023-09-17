@@ -6,9 +6,8 @@
 <!--// 折り畳み展開ポインタ -->
 <!-- 折り畳まれ部分 -->
   <div id="open" style="display:none;clear:both;">
-  <!--ここの部分が折りたたまれる＆展開される部分になります。自由に記述してください。-->
+  <!--ここの部分が折りたたまれる＆展開される部分-->
   <div class="search_form d-flex justify-content-end">
-
     <%= form_with url:search_searches_path, method: :get do |f| %>
     <div class="form-group mt-2">
       <div class="form-title">Category
@@ -21,11 +20,20 @@
     <div class="form-group">
       <%= f.text_field :shop_name, placeholder: 'ショップ名' %>
     </div>
+
     <div class="form-group">
       <%= submit_tag '検索', class: "btn btn-outline-info btn-sm mx-auto my-3 btn-block" %>
     </div>
-   <% end %>
-        </div>
+    <% end %>
+  </div>
+  
+  
+
+   <%# form_with url:search_searches_path, method: :get do |f| %>
+　<%# text_field_tag "price1",(params[:price1] if params[:price1]) %> ～
+　<%# text_field_tag "price2",(params[:price2] if params[:price2]) %>
+<%# submit_tag "検索"%>
+<%# end %>
 
   </div>
 </div>
