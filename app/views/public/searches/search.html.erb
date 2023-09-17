@@ -9,16 +9,16 @@
         <div id="anchor-search"><h4 class='h4-search'>"<%= @range %>"の検索結果</h4></div>
         <div class="mx-auto mt-5">
           <% if @range == "Coffee" %>
-            <% if @record_searches.present? %>
-              <% @record_searches.each do |record_coffee| %>
+            <% if @record.present? %>
+              <% @record.each do |record_coffee| %>
                 <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
               <% end %>
             <% else %>
               検索条件に当てはまるレビューはありません。
             <% end %>
           <% else %>
-          <% if @record_searches.present? %>
-            <% @record_searches.each do |record_tea_leafe| %>
+          <% if @record.present? %>
+            <% @record.each do |record_tea_leafe| %>
               <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
             <% end %>
           <% else %>
@@ -26,7 +26,7 @@
           <% end %>
         <% end %>
         </div>
-        <%= paginate @record_searches %>
+        <%= paginate @record %>
         <div class="d-flex justify-content-end">
           <a href="#aanchor-search">トップへ戻る▲</a>
         </div>

@@ -2,18 +2,25 @@ class Public::SearchesController < ApplicationController
 
   def search
     @range = params[:range]
+    min_price = params[:min_price]
+    max_price = params[:max_price]
     if @range == "Coffee"
-      @record_searches = RecordCoffee.all
+      @record = RecordCoffee.all
       if params[:item_name]
-        @record_searches = @record_searches.where('item_name LIKE ?', "%#{params[:item_name]}%")
-      end
+        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%")
       if params[:shop_name]
-        @record_searches = @record_searches.where('shop_name LIKE ?', "%#{params[:shop_name]}%")
+        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%")
+      # 価格絞り込み
+      if max_price != '' && max_price != nil && min_price != '' && min_price != nil
+            @record = @record.where("price >= #{min_price} and price <= #{max_price}")
+        elsif max_price != '' && max_price != nil
+            @record = @record.where("price <= #{max_price}")
+        elsif min_price != '' && min_price != nil
+            @record = @record.where("price >= #{min_price}")
       end
-      # if params[:item_price]
-      #   @record = @record.where(....)
-      # end
-      @record_searches = @record_searches.released.page(params[:page]).per(5)
+      end
+      end
+      @record = @record.released.page(params[:page]).per(5)
 
       # if params[:item_name] && params[:shop_name]
       #   @record_searches = RecordCoffee.where(
@@ -26,16 +33,33 @@ class Public::SearchesController < ApplicationController
       #     'item_name LIKE ?', "%#{params[:item_name]}%").released.page(params[:page]).per(5)
       # end
     else
-      if params[:item_name] && params[:shop_name]
-        @record_searches = RecordTeaLeafe.where(
-          'item_name LIKE ? AND shop_name LIKE ?', "%#{params[:item_name]}%", "%#{params[:shop_name]}%").released.page(params[:page]).per(5)
-        elsif params[:shop_name]
-        @record_searches = RecordTeaLeafe.where(
-          'brand_name LIKE ?', "%#{params[:brand_name]}%").released.page(params[:page]).per(5)
-      elsif params[:item_name]
-        @record_searches = RecordTeaLeafe.where(
-          'item_name LIKE ?', "%#{params[:item_name]}%").released.page(params[:page]).per(5)
+      @record = RecordTeaLeafe.all
+      if params[:item_name]
+        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%")
+      if params[:shop_name]
+        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%")
+      # 価格絞り込み
+      if max_price != '' && max_price != nil && min_price != '' && min_price != nil
+            @record = @record.where("price >= #{min_price} and price <= #{max_price}")
+        elsif max_price != '' && max_price != nil
+            @record = @record.where("price <= #{max_price}")
+        elsif min_price != '' && min_price != nil
+            @record = @record.where("price >= #{min_price}")
       end
+      end
+      end
+      @record = @record.released.page(params[:page]).per(5)
+
+      # if params[:item_name] && params[:shop_name]
+      #   @record_searches = RecordTeaLeafe.where(
+      #     'item_name LIKE ? AND shop_name LIKE ?', "%#{params[:item_name]}%", "%#{params[:shop_name]}%").released.page(params[:page]).per(5)
+      # elsif params[:shop_name]
+      #   @record_searches = RecordTeaLeafe.where(
+      #     'brand_name LIKE ?', "%#{params[:brand_name]}%").released.page(params[:page]).per(5)
+      # elsif params[:item_name]
+      #   @record_searches = RecordTeaLeafe.where(
+      #     'item_name LIKE ?', "%#{params[:item_name]}%").released.page(params[:page]).per(5)
+      # end
     end
   end
 
