@@ -5,18 +5,18 @@ class Public::SearchesController < ApplicationController
     min_price = params[:min_price]
     max_price = params[:max_price]
     if @range == "Coffee"
-      @record = RecordCoffee.all
+      @record = RecordCoffee.all.released.page(params[:page]).per(5)
       if params[:item_name]
-        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%")
+        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%").released.page(params[:page]).per(5)
       if params[:shop_name]
-        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%")
+        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%").released.page(params[:page]).per(5)
       # 価格絞り込み
       if max_price != '' && max_price != nil && min_price != '' && min_price != nil
-            @record = @record.where("price >= #{min_price} and price <= #{max_price}")
+            @record = @record.where("price >= #{min_price} and price <= #{max_price}").released.page(params[:page]).per(5)
         elsif max_price != '' && max_price != nil
-            @record = @record.where("price <= #{max_price}")
+            @record = @record.where("price <= #{max_price}").released.page(params[:page]).per(5)
         elsif min_price != '' && min_price != nil
-            @record = @record.where("price >= #{min_price}")
+            @record = @record.where("price >= #{min_price}").released.page(params[:page]).per(5)
       end
       end
       end
@@ -35,16 +35,16 @@ class Public::SearchesController < ApplicationController
     else
       @record = RecordTeaLeafe.all
       if params[:item_name]
-        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%")
+        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%").released.page(params[:page]).per(5)
       if params[:shop_name]
-        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%")
+        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%").released.page(params[:page]).per(5)
       # 価格絞り込み
       if max_price != '' && max_price != nil && min_price != '' && min_price != nil
-            @record = @record.where("price >= #{min_price} and price <= #{max_price}")
+            @record = @record.where("price >= #{min_price} and price <= #{max_price}").released.page(params[:page]).per(5)
         elsif max_price != '' && max_price != nil
-            @record = @record.where("price <= #{max_price}")
+            @record = @record.where("price <= #{max_price}").released.page(params[:page]).per(5)
         elsif min_price != '' && min_price != nil
-            @record = @record.where("price >= #{min_price}")
+            @record = @record.where("price >= #{min_price}").released.page(params[:page]).per(5)
       end
       end
       end
