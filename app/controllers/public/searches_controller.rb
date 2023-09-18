@@ -7,16 +7,16 @@ class Public::SearchesController < ApplicationController
     if @range == "Coffee"
       @record = RecordCoffee.all.released.page(params[:page]).per(5)
       if params[:item_name]
-        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%").released.page(params[:page]).per(5)
+        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%")
       if params[:shop_name]
-        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%").released.page(params[:page]).per(5)
+        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%")
       # 価格絞り込み
       if max_price != '' && max_price != nil && min_price != '' && min_price != nil
-            @record = @record.where("price >= #{min_price} and price <= #{max_price}").released.page(params[:page]).per(5)
+            @record = @record.where("price >= #{min_price} and price <= #{max_price}").compact
         elsif max_price != '' && max_price != nil
-            @record = @record.where("price <= #{max_price}").released.page(params[:page]).per(5)
+            @record = @record.where("price <= #{max_price}").compact
         elsif min_price != '' && min_price != nil
-            @record = @record.where("price >= #{min_price}").released.page(params[:page]).per(5)
+            @record = @record.where("price >= #{min_price}").compact
       end
       end
       end
@@ -35,16 +35,16 @@ class Public::SearchesController < ApplicationController
     else
       @record = RecordTeaLeafe.all
       if params[:item_name]
-        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%").released.page(params[:page]).per(5)
+        @record = @record.where('item_name LIKE ?', "%#{params[:item_name]}%")
       if params[:shop_name]
-        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%").released.page(params[:page]).per(5)
+        @record = @record.where('shop_name LIKE ?', "%#{params[:shop_name]}%")
       # 価格絞り込み
       if max_price != '' && max_price != nil && min_price != '' && min_price != nil
-            @record = @record.where("price >= #{min_price} and price <= #{max_price}").released.page(params[:page]).per(5)
+            @record = @record.where("price >= #{min_price} and price <= #{max_price}").compact
         elsif max_price != '' && max_price != nil
-            @record = @record.where("price <= #{max_price}").released.page(params[:page]).per(5)
+            @record = @record.where("price <= #{max_price}").compact
         elsif min_price != '' && min_price != nil
-            @record = @record.where("price >= #{min_price}").released.page(params[:page]).per(5)
+            @record = @record.where("price >= #{min_price}").compact
       end
       end
       end
@@ -62,13 +62,6 @@ class Public::SearchesController < ApplicationController
       # end
     end
   end
-
-  # def search_price
-  #   @products = Product.where('price >=? AND price <=?', params[:price1],params[:price2])
-  #   @products = Product.where('price >=?', params[:price1]) if params[:price2].blank?
-  #   @products = Product.where('price <=?', params[:price2]) if params[:price1].blank?
-  #   render :action => 'index'
-  # end
 
 
 end
