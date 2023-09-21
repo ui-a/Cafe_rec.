@@ -1,6 +1,6 @@
 class Public::RecordTeaLeavesController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:update, :edit]
+  before_action :ensure_correct_user, only: [:update, :edit, :destroy]
 
   def index
     if params[:latest]
