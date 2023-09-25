@@ -35,6 +35,10 @@ class Public::SessionsController < Devise::SessionsController
     record_coffees_path
   end
 
+  def after_sign_out_path_for(resource)
+    new_user_session_path
+  end
+
   protected
 
   def reject_invalid_user
