@@ -13,6 +13,7 @@ class RecordTeaLeafe < ApplicationRecord
   validates :shop_name, presence:true
   validates :price, presence:true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :review, presence:true, length: { minimum: 10, maximum: 500}
+  validates :total_star, presence:true
 
   scope :latest, -> {order(created_at: :desc)}
   scope :total_star_count, -> {order(star: :desc)}

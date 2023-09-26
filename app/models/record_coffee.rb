@@ -13,6 +13,7 @@ class RecordCoffee < ApplicationRecord
   validates :shop_name, presence:true
   validates :price, presence:true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :review, presence:true, length: { minimum: 10, maximum: 500}
+  validates :total_star, presence:true
 
   scope :latest, -> {order(created_at: :desc)}
   scope :total_star_count, -> {order(total_star: :desc)}
@@ -46,7 +47,7 @@ class RecordCoffee < ApplicationRecord
       self.tags << tag
     end
   end
-  
+
   def self.looks(search, word)
     if search == "item_name"
       @record_coffee = RecordCoffee.where("item_name LIKE?", "%#{word}%")

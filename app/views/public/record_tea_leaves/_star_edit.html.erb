@@ -1,0 +1,161 @@
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-3">
+      総合評価
+    </div>
+    <div class="col-9">
+      <div id="total_star_<%= record_tea_leafe.id %>"></div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#total_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.total_star %>",
+    scoreName: "record_tea_leafe[total_star]",
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-3">
+      香り
+    </div>
+    <div class="col-9">
+      <div id="scent_star_<%= record_tea_leafe.id %>"></div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#scent_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.scent_star %>",
+    scoreName: "record_tea_leafe[scent_star]",
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-3">
+      甘み
+    </div>
+    <div class="col-9">
+      <div id="sweet_star_<%= record_tea_leafe.id %>"></div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#sweet_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.sweet_star %>",
+    scoreName: "record_tea_leafe[sweet_star]",
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-3">
+      渋み
+    </div>
+    <div class="col-9">
+      <div id="astringency_star_<%= record_tea_leafe.id %>"></div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#astringency_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.astringency_star %>",
+    scoreName: "record_tea_leafe[astringency_star]",
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-3">
+      清涼感
+    </div>
+    <div class="col-9">
+      <div id="fresh_star_<%= record_tea_leafe.id %>"></div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#fresh_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.fresh_star %>",
+   scoreName: "record_tea_leafe[fresh_star]",
+  };
+  raty(elem, opt);
+});
+</script>
+
+<div class="form-group">
+  <div class="d-flex flex-row mb-3">
+    <div class="col-3">
+      飲みやすさ
+    </div>
+    <div class="col-9">
+      <div id="easy_star_<%= record_tea_leafe.id %>"></div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#easy_star_<%= record_tea_leafe.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= record_tea_leafe.easy_star %>",
+    scoreName: "record_tea_leafe[easy_star]",
+  };
+  raty(elem, opt);
+});
+</script>
