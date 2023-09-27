@@ -7,8 +7,13 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @record_coffees = @user.record_coffees.order(created_at: :desc)
-    @record_tea_leaves = @user.record_tea_leaves.order(created_at: :desc)
+    if current_user == @user
+      @record_coffees = @user.record_coffees.order(created_at: :desc)
+      @record_tea_leaves = @user.record_tea_leaves.order(created_at: :desc)
+    else
+      @record_coffees = @user.record_coffees.released.order(created_at: :desc)
+      @record_tea_leaves = @user.record_tea_leaves.released.order(created_at: :desc)
+    end
   end
 
   def edit

@@ -7,22 +7,32 @@
     <div class='col-md-9 py-5'>
       <div class='background-record ml-2 py-3 px-5'>
         <div id="anchor-mypage"><h4 class="h4-review mb-4"><%= @user.name %>さんのレビュー一覧</h4></div>
-        <h5 class="h4-review">Coffee Review</h5>
-        <% if @record_coffees.present? %>
-            <% @record_coffees.each do |record_coffee| %>
-              <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
+
+        <div class="tabs">
+          <input id="all" type="radio" name="tab_item" checked>
+          <label class="tab_item" for="all">Coffee Review</label>
+          <input id="programming" type="radio" name="tab_item">
+          <label class="tab_item" for="programming">Tea Review</label>
+
+          <div class="tab_content" id="all_content">
+            <% if @record_coffees.present? %>
+              <% @record_coffees.each do |record_coffee| %>
+                <%= render 'public/record_coffees/index', record_coffee: record_coffee %>
+              <% end %>
+            <% else %>
+              <p>投稿したレビューはありません</p>
             <% end %>
-          <% else %>
-            <p>投稿したレビューはありません</p>
-          <% end %>
-        <h5 class="h4-review">Tea Review</h5>
-        <% if @record_tea_leaves.present? %>
-            <% @record_tea_leaves.each do |record_tea_leafe| %>
-              <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
+          </div>
+          <div class="tab_content" id="programming_content">
+            <% if @record_tea_leaves.present? %>
+              <% @record_tea_leaves.each do |record_tea_leafe| %>
+                <%= render 'public/record_tea_leaves/index', record_tea_leafe: record_tea_leafe %>
+              <% end %>
+            <% else %>
+              <p>投稿したレビューはありません</p>
             <% end %>
-          <% else %>
-            <p>投稿したレビューはありません</p>
-          <% end %>
+          </div>
+        </div>
         <div class="d-flex justify-content-end">
           <a href="#anchor-mypage">トップへ戻る▲</a>
         </div>

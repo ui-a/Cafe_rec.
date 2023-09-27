@@ -11,9 +11,9 @@
       <%= record_coffee.created_at.strftime('%Y/%m/%d') %>
       <% if record_coffee.user == current_user %>
         <% if record_coffee.release %>
-          <span >|公開</span>
+          <span class="btn btn-sm btn-success ml-2" disabled>公開</span>
         <% else %>
-          <span class="text-black-50">|非公開</span>
+          <span class="btn btn-sm btn-secondary ml-2" disabled>非公開</span>
         <% end %>
       <% end %>
     </div>
@@ -30,11 +30,11 @@
           <h5><%= record_coffee.item_name %></h5>
         </div>
         <div class="text-wrap mb-2" style="width: 20rem;">
-          <p class="card-text"><span class="shop-price">ショップ名</span>　<%= record_coffee.shop_name %></p>
+          <p class="card-text"><span class="shop-price">ショップ名</span><%= record_coffee.shop_name %></p>
         </div>
-          <p class="card-text"><span class="shop-price">価格</span>　<%= record_coffee.price.to_s(:delimited) %>円(税込/100gあたり)</p>
+          <p class="card-text"><span class="shop-price">価格</span><%= record_coffee.price.to_s(:delimited) %>円(税込/100gあたり)</p>
         <div class="border-top border-bottom py-1 mb-3" style="color: #000;">
-      　   <i class="fa-sharp fa-solid fa-tag"></i>
+          <i class="fa-sharp fa-solid fa-tag"></i>
           <%= record_coffee.tags.map(&:name).join(', ') %>
         </div>
         <div class="border rounded p-2" style="width: 20rem;">
